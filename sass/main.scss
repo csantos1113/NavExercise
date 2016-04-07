@@ -1,0 +1,36 @@
+@import "_vars";
+@import "fonts.css";
+
+body {
+	margin: 0px;
+	background: #fff;
+	color: #fff;
+
+	&.locked {
+		overflow: hidden;
+	}
+}
+a {
+	text-decoration: none;
+
+	&:visited {
+		color: white;
+	}
+	&:focus {
+		outline: none;
+	}
+}
+@import "_header";
+@import "_body";
+
+/*
+TODO:
+- Titulo: posicion y comportamiento correcto
+- NAV: se solapan cuando el width del navegador estar cerca a 768;
+- HAMBURGESA: estilo maluco cuando se convierte en X;
+- HAMBURGESA: correrlo hacia la derecha;
+- MASCARA: no se esta quitando bien en celular;
+- COPYRIGHT: no me convence el estilo;
+- COPYRIGHT: no esta bien puesto al final segun el diseno del PDF
+- PRIMARY_NAV: en celular, clickear para cerrar el submenu, cierra todo;
+ */

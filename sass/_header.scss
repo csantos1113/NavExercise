@@ -1,0 +1,203 @@
+.nav-header {
+  background-color: #ec008c;
+  padding: 0px 24px;
+  position: fixed;
+  z-index: 3;
+  width: 100%;
+  margin-top: -72px;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+}
+.huge-logo {
+  padding: 24px 0px;
+  float: left;
+  height: 24px;
+  width: 60px;
+
+  img {
+    width: inherit;
+  }
+}
+.menu {
+  width: 24px;
+  height: 20px;
+  padding: 20px 0;
+  display: none;
+
+  span {
+    width: inherit;
+    background-color: white;
+    height: 4px;
+    position: relative;
+    display: block;
+    top: 8px;
+    transition: background 0s .3s;
+  }
+  span:before {
+    content: "";
+    background-color: white;
+    width: 100%;
+    position: absolute;
+    height: inherit;
+    top: -8px;
+    left: 0;
+    transition-property: top, transform;
+  }
+  span:after {
+    content: "";
+    background-color: white;
+    width: 100%;
+    position: absolute;
+    height: inherit;
+    top: 8px;
+    left: 0;
+    transition-property: top, transform;
+  }
+  span:before, span:after {
+    transition-duration: .3s, .3s;
+    transition-delay: 0s, .3s;
+  }
+}
+.nav-content {
+  display: inline-block;
+  padding-left: 48px;
+
+  .copyright {
+    display: none;
+  }
+}
+.primary-options {
+  .primary-nav {
+    font: 21px/48px HUGEAvantGardeBold;
+    height: inherit;
+    display: inline-block;
+    padding: 12px 24px;
+    color: inherit;
+  }
+  & > li {
+    display: inline-block;
+    position: relative;
+  }
+  .primary-nav:hover, .active .primary-nav {
+    color: #ec008c;
+    background-color: white;
+  }
+}
+.secondary-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  display: none;
+
+  .nav-header .active & {
+    display: initial;
+  }
+  .secondary-nav {
+    font: 16px/48px Galaxie;
+    padding: 0 24px;
+    color: black;
+    display: inline-block;
+    white-space: nowrap;
+    width: calc(100% - 48px);
+    &:hover {
+      color: #ec008c;
+      background-color: #eee;
+    }
+  }
+}
+@media only screen and (max-width:768px) {
+  .huge-logo {
+    display: none;
+  }
+  .nav-content {
+    display: none;
+  }
+  .nav-header {
+    margin-top: -60px;
+    height: 60px;
+  }
+  .menu {
+    display: inline-block;
+  }
+  .primary-options .primary-nav:hover {
+    color: initial;
+    background-color: #eee;
+  }
+  .menu-showed {
+    .huge-logo {
+      display: inline-block;
+      padding: 20px 0px;
+      height: 20px;
+      width: 50px;
+    }
+    .menu span {
+      background: 0 0;
+
+      &:before {
+        top: 0;
+        transform: rotate(45deg);
+      }
+      &:after {
+        top: 0;
+        transform: rotate(-45deg);
+      }
+    }
+    .nav-content {
+      display: block;
+      position: absolute;
+      padding-left: 0px;
+      padding-top: 12px;
+      top: 60px;
+      left: 0;
+      width: calc(100vw - 72px);
+      height: calc(100vh - 60px);
+      background-color: white;
+      color: black;
+      overflow-y: auto;
+    }
+    .primary-options > li {
+      display: block;
+    }
+    .primary-nav {
+      padding: 0px 48px 0px 24px;
+      width: calc(100% - 72px);
+    }
+    .has-children .primary-nav:after {
+      content: "\276e";
+      color: #ec008c;
+      position: absolute;
+      right: 0;
+      width: 48px;
+      text-align: center;
+      transform: rotate(-90deg);
+      transition: transform 0.3s;
+    }
+    .active {
+      .primary-nav{
+        color: initial;
+      }
+      &.has-children .primary-nav:after {
+        transform: rotate(-270deg);
+      }
+      .secondary-options {
+        position: initial;
+      }
+    }
+    .copyright {
+      line-height: 48px;
+      position: absolute;
+      bottom: 0;
+      margin: 0 24px;
+      left: 0;
+      right: 0;
+      display: block;
+      font-size: 12px;
+      font-family: "Helvetica Neue Regular";
+    }
+  }
+}
