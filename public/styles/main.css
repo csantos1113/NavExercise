@@ -1,0 +1,289 @@
+@import "fonts.css";
+
+body {
+  margin: 0px;
+  background: #fff;
+  color: #fff;
+}
+h1 {
+
+  /*  position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      
+      font: 20vmin/1 HUGEAvantGardeBold;
+      letter-spacing: -0.06em;
+      text-align: center;*/
+}
+
+/*My code*/
+body {
+  margin: 0px;
+}
+body.locked {
+  overflow: hidden;
+}
+a {
+  text-decoration: none;
+}
+a:visited {
+  color: white;
+}
+a:focus {
+  outline: none;
+}
+
+/*HEADER*/
+.nav-header {
+  background-color: #ec008c;
+  padding: 0px 24px;
+  position: fixed;
+  z-index: 3;
+  width: 100%;
+  margin-top: -72px;
+}
+.huge-logo {
+  padding: 24px 0px;
+  float: left;
+  height: 24px;
+  width: 60px;
+}
+.huge-logo img {
+  width: inherit;
+}
+.menu {
+  width: 24px;
+  height: 20px;
+  padding: 20px 0;
+  display: none;
+}
+.menu span {
+  width: inherit;
+  background-color: white;
+  height: 4px;
+  position: relative;
+  display: block;
+  top: 8px;
+  transition: background 0s .3s;
+}
+.menu span:before {
+  content: "";
+  background-color: white;
+  width: 100%;
+  position: absolute;
+  height: inherit;
+  top: -8px;
+  left: 0;
+  transition-property: top, transform;
+}
+.menu span:after {
+  content: "";
+  background-color: white;
+  width: 100%;
+  position: absolute;
+  height: inherit;
+  top: 8px;
+  left: 0;
+  transition-property: top, transform;
+}
+.menu span:before, .menu span:after {
+  transition-duration: .3s, .3s;
+  transition-delay: 0s, .3s;
+}
+.nav-header ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.nav-content {
+  display: inline-block;
+  padding-left: 48px;
+}
+.nav-content .copyright {
+  display: none;
+}
+.primary-options .primary-nav {
+  font: 21px/48px HUGEAvantGardeBold;
+  height: inherit;
+  display: inline-block;
+  padding: 12px 24px;
+  color: inherit;
+}
+.primary-options > li {
+  display: inline-block;
+  position: relative;
+}
+.primary-options .primary-nav:hover, .primary-options .active .primary-nav {
+  color: #ec008c;
+  background-color: white;
+}
+.secondary-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  display: none;
+}
+.nav-header .active .secondary-options {
+  display: initial;
+}
+.secondary-options .secondary-nav {
+  font: 16px/48px Galaxie;
+  padding: 0 24px;
+  color: black;
+  display: inline-block;
+  white-space: nowrap;
+  width: calc(100% - 48px);
+}
+.secondary-options .secondary-nav:hover {
+  color: #ec008c;
+  background-color: #eee;
+}
+
+/*IMAGEN*/
+.primary-image {
+  height: 640px;
+  background-image: url(../images/background-image.jpg);
+  background-size: cover;
+  margin-top: 72px;
+}
+h1 {
+  font: 120px/132px HUGEAvantGardeBold;
+  margin: 0;
+}
+
+/*CONTENIDO*/
+.content {
+  margin: 60px auto;
+  max-width: 968px;
+  color: black;
+  font: 24px/36px Galaxie;
+}
+
+/*MASK*/
+#mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+#mask.hide {
+  display: none;
+}
+@media only screen and (max-width:768px) {
+  .huge-logo {
+    display: none;
+  }
+  .nav-content {
+    display: none;
+  }
+  .nav-header {
+    margin-top: -60px;
+    height: 60px;
+  }
+  .menu {
+    display: inline-block;
+  }
+  .menu-showed .huge-logo {
+    display: inline-block;
+    padding: 20px 0px;
+    height: 20px;
+    width: 50px;
+  }
+  .menu-showed .menu span {
+    background: 0 0;
+  }
+  .menu-showed .menu span:before {
+    top: 0;
+    transform: rotate(45deg);
+  }
+  .menu-showed .menu span:after {
+    top: 0;
+    transform: rotate(-45deg);
+  }
+  .menu-showed .nav-content {
+    display: block;
+    position: absolute;
+    padding-left: 0px;
+    padding-top: 12px;
+    top: 60px;
+    left: 0;
+    width: calc(100vw - 72px);
+    height: calc(100vh - 60px);
+    background-color: white;
+    color: black;
+    overflow-y: auto;
+  }
+  .menu-showed .primary-options > li {
+    display: block;
+  }
+  .menu-showed .primary-nav {
+    padding: 0px 48px 0px 24px;
+    width: calc(100% - 72px);
+  }
+  .primary-options .primary-nav:hover {
+    color: initial;
+    background-color: #eee;
+  }
+  .menu-showed .has-children .primary-nav:after {
+    content: "\276e";
+    color: #ec008c;
+    position: absolute;
+    right: 0;
+    width: 48px;
+    text-align: center;
+    transform: rotate(-90deg);
+    transition: transform 0.3s;
+  }
+  .menu-showed .active .primary-nav {
+    color: initial;
+  }
+  .menu-showed .active.has-children .primary-nav:after  {
+    transform: rotate(-270deg);
+  }
+  .menu-showed .copyright {
+    line-height: 48px;
+    position: absolute;
+    bottom: 0;
+    margin: 0 24px;
+    left: 0;
+    right: 0;
+    display: block;
+    font-size: 12px;
+    font-family: "Helvetica Neue Regular";
+  }
+  .menu-showed .active .secondary-options {
+    position: initial;
+  }
+  .primary-image {
+    height: 240px;
+    margin-top: 60px;
+  }
+  h1 {
+    margin: 50px 24px;
+    color: black;
+    font-size: 44px;
+    line-height: 48px;
+  }
+  .content {
+    margin: 0px 24px;
+    font-size: 14px;
+    line-height: 24px;
+  }
+}
+
+/*
+TODO:
+- Titulo: posicion y comportamiento correcto
+- NAV: se solapan cuando el width del navegador estar cerca a 768;
+- HAMBURGESA: estilo maluco cuando se convierte en X;
+- HAMBURGESA: correrlo hacia la derecha;
+- MASCARA: no se esta quitando bien en celular;
+- COPYRIGHT: no me convence el estilo;\
+- COPYRIGHT: no esta bien puesto al final segun el diseno del PDF
+- PRIMARY_NAV: en celular, clickear para cerrar el submenu, cierra todo;
+ */
