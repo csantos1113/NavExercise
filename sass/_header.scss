@@ -83,7 +83,10 @@
     display: inline-block;
     position: relative;
   }
-  .primary-nav:hover, .active .primary-nav/* , .primary-nav:focus */ {
+  .primary-nav:hover, .active .primary-nav
+
+  /* , .primary-nav:focus */
+  {
     color: $magenta;
     background-color: $white;
   }
@@ -108,7 +111,10 @@
     color: $black;
     width: unquote("calc(100% -")$desktop-padding-right-left-second-nav*2 unquote(")");
 
-    &:hover/* , &:focus */ {
+    &:hover
+
+    /* , &:focus */
+    {
       color: $magenta;
       background-color: $light-gray;
     }
@@ -119,7 +125,31 @@
     display: none;
   }
   .nav-content {
-    display: none;
+    position: absolute;
+    padding-left: 0px;
+    top: $mobile-height-header;
+    left: 0;
+    right: 100%;
+    height: unquote("calc(100vh - ")$mobile-height-header unquote(")");
+    background-color: $white;
+    color: $black;
+    overflow-y: auto;
+    transition: right 0.3s;
+
+    .copyright {
+      position: fixed;
+      bottom: 0;
+      margin-left: 0;
+      left: 0;
+      right: 100%;
+      background-color: $white;
+      font: $mobile-copyright;
+      line-height: $mobile-padding-bottom-first-panel;
+      transition: all 0.3s;
+      white-space: nowrap;
+      overflow: hidden;
+      display: inline-block;
+    }
   }
   .nav-header {
     margin-top: -1 * $mobile-height-header;
@@ -130,9 +160,45 @@
     display: inline-block;
     float: left;
   }
-  .primary-options .primary-nav:hover {
-    color: initial;
-    background-color: $light-gray;
+  .primary-options {
+    padding-top: $mobile-padding-top-first-panel;
+    padding-bottom: $mobile-padding-bottom-first-panel;
+
+    & > li {
+      display: block;
+    }
+    .primary-nav {
+      padding: 0px $mobile-width-chevron 0px $mobile-padding-left;
+      width: unquote("calc(100% - ")$mobile-width-chevron+$mobile-padding-left unquote(")");
+
+      &:hover {
+        color: initial;
+        background-color: $light-gray;
+      }
+    }
+  }
+  .has-children .primary-nav:after {
+    content: "\276e";
+    color: $magenta;
+    position: absolute;
+    right: 0;
+    width: $mobile-width-chevron;
+    text-align: center;
+    transform: rotate($mobile-degree-chevron);
+    transition: transform 0.3s;
+  }
+  .active {
+    .primary-nav {
+      color: initial;
+    }
+    &.has-children .primary-nav:after {
+      transform: rotate($mobile-degree-rotation-chevron);
+    }
+    .secondary-options {
+      position: initial;
+      padding-top: initial;
+      padding-bottom: initial;
+    }
   }
   .menu-showed {
     .huge-logo {
@@ -159,63 +225,12 @@
       }
     }
     .nav-content {
-      display: block;
-      position: absolute;
-      padding-left: 0px;
-      top: $mobile-height-header;
-      left: 0;
-      width: unquote("calc(100vw - ")$mobile-space-available-body unquote(")");
-      height: unquote("calc(100vh - ")$mobile-height-header unquote(")");
-      background-color: $white;
-      color: $black;
-      overflow-y: auto;
-    }
-    .primary-options {
-      padding-top: $mobile-padding-top-first-panel;
-      padding-bottom: $mobile-padding-bottom-first-panel;
+      right: $mobile-space-available-body;
 
-      & > li {
-        display: block;
+      .copyright {
+        right: $mobile-space-available-body;
+        margin-left: $mobile-padding-left;
       }
-    }
-    .primary-nav {
-      padding: 0px $mobile-width-chevron 0px $mobile-padding-left;
-      width: unquote("calc(100% - ")$mobile-width-chevron+$mobile-padding-left unquote(")");
-    }
-    .has-children .primary-nav:after {
-      content: "\276e";
-      color: $magenta;
-      position: absolute;
-      right: 0;
-      width: $mobile-width-chevron;
-      text-align: center;
-      transform: rotate($mobile-degree-chevron);
-      transition: transform 0.3s;
-    }
-    .active {
-      .primary-nav {
-        color: initial;
-      }
-      &.has-children .primary-nav:after {
-        transform: rotate($mobile-degree-rotation-chevron);
-      }
-      .secondary-options {
-        position: initial;
-        padding-top: initial;
-        padding-bottom: initial;
-      }
-    }
-    .copyright {
-      position: fixed;
-      bottom: 0;
-      margin: 0 $mobile-padding-left;
-      left: 0;
-      right: 0;
-      display: block;
-      background-color: $white;
-      font: $mobile-copyright;
-      line-height: $mobile-padding-bottom-first-panel;
-      width: unquote("calc(100vw - ")$mobile-space-available-body unquote("- ")$mobile-padding-left*2 unquote(")");
     }
   }
 }
