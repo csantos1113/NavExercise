@@ -6,12 +6,13 @@ body {
 	background: #fff;
 	color: #fff;
 
-	&.locked {
+	&.menu-showed {
 		overflow: hidden;
 	}
 }
 a {
 	text-decoration: none;
+	-webkit-tap-highlight-color:$magenta;
 
 	&:visited {
 		color: white;
@@ -19,19 +20,17 @@ a {
 	&:focus {
 		outline: none;
 	}
+	&:active {
+		background-color: inherit;
+	}
 }
 @import "_header";
 @import "_body";
 
 /*
 TODO:
-- Titulo: posicion y comportamiento correcto
 - NAV: se solapan cuando el width del navegador estar cerca a 768;
-- HAMBURGESA: estilo maluco cuando se convierte en X;
-- HAMBURGESA: correrlo hacia la derecha;
-- MASCARA: no se esta quitando bien en celular;
-- COPYRIGHT: no me convence el estilo;
-- COPYRIGHT: no esta bien puesto al final segun el diseno del PDF
+- HAMBURGESA: estilo maluco cuando pasa de X a Hamburgesa
 - PRIMARY_NAV: en celular, clickear para cerrar el submenu, cierra todo;
-- SECOND NAV: margin top margin bottom (Desktop)
+- BODY: empujar contenido
  */

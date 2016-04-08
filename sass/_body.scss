@@ -9,7 +9,7 @@ h1 {
 	color: $black;
 	font: $mobile-font-headline;
 	letter-spacing: -0.06em;
-	text-align: center;
+	text-align: left;
 }
 .content {
 	margin: $desktop-margin-top-content auto;
@@ -24,9 +24,10 @@ h1 {
 	right: 0;
 	bottom: 0;
 	background-color: $translucent-black;
+	display:none;
 
-	&.hide {
-		display: none;
+	.menu-showed & {
+		display: block;
 	}
 }
 //Desktop
@@ -40,6 +41,7 @@ h1 {
 		-webkit-transform: translate(-50%, -50%);
 		transform: translate(-50%, -50%);
 		color: $white;
+		text-align: center;
 	}
 }
 //Phone

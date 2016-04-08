@@ -8,4 +8,4 @@ var fs = require('fs'),
 		file: path.join(__dirname, 'sass', 'main.scss'),
 		outputStyle: 'expanded'
 	});
-fs.writeFileSync(path.join(publicDir, 'styles', 'main_expanded.css'), result.css.toString());
+fs.writeFileSync(path.join(publicDir, 'styles', 'main.css'), result.css.toString());
