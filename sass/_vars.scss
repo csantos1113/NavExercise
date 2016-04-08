@@ -1,1 +1,50 @@
-$hola : 1px;
+//Measures
+//Desktop
+$desktop-width-logo: 60px;
+$desktop-margin-right:48px;
+$desktop-padding-header: 24px;
+$desktop-height-header-content: $desktop-padding-header;
+//padding top + padding bottom + height content
+$desktop-height-header: $desktop-padding-header * 2 + $desktop-height-header-content;
+$desktop-padding-first-nav: $desktop-padding-header;
+$desktop-padding-right-left-second-nav: $desktop-padding-first-nav;
+$desktop-padding-top-bottom-second-panel: 12px;
+$desktop-height-second-nav: 48px;
+$desktop-height-image: 640px;
+$desktop-margin-top-content: 60px;
+$desktop-width-content: 968px;
+//Mobile
+$mobile-width-logo: 50px;
+$mobile-width-menu-icon: 24px;
+$mobile-padding-left: 24px;
+$mobile-padding-top-bottom-header: 20px;
+$mobile-height-header-content: $mobile-padding-top-bottom-header;
+//padding top + padding bottom + height content
+$mobile-height-header: $mobile-padding-top-bottom-header * 2 + $mobile-height-header-content;
+$mobile-menu-portion: $mobile-height-header-content/5;
+$mobile-padding-top-first-panel: 12px;
+$mobile-padding-bottom-first-panel: 48px;
+$mobile-height-image: 240px;
+$mobile-padding-top-title: 50px;
+$mobile-padding-top-content: $mobile-padding-top-title;
+$mobile-padding-left-right-menu-icon: 24px;
+$mobile-space-available-body: $mobile-padding-left-right-menu-icon * 2 + $mobile-width-menu-icon;
+$mobile-width-chevron: 48px;
+$mobile-degree-chevron: -90deg;
+$mobile-degree-rotation-chevron: $mobile-degree-chevron - 180;
+
+//Typography
+$font-first-nav: 21px/48px HUGEAvantGardeBold;
+$font-second-nav: 16px/48px Galaxie;
+$desktop-font-headline: 120px/132px HUGEAvantGardeBold;
+$desktop-font-body: 24px/36px Galaxie;
+$mobile-font-headline: 44px/48px HUGEAvantGardeBold;
+$mobile-font-body: 14px/24px Galaxie;
+$mobile-copyright: 12px/16px "Helvetica Neue Regular";
+
+//Color
+$magenta: #ec008c;
+$light-gray: #eee;
+$translucent-black: rgba(0, 0, 0, 0.5);
+$white: #fff;
+$black: #000;
