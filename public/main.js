@@ -14,13 +14,31 @@
 		navContentStyle: null,
 		body: null
 	};
+	/**
+	 * Singleton with utility functions
+	 * @type {Object}
+	 */
 	var Util = {
+		/**
+		 * Identifies whether it's a Phone
+		 * @return {Boolean} true if phone, false otherwise
+		 */
 		isMobile() {
 			return cacheEl.navContentStyle.display === 'block';
 		},
+		/**
+		 * Add a css class to a specific element
+		 * @param {Object} element   Element to add the class
+		 * @param {String} className class to add
+		 */
 		addClass(element, className) {
 			element.classList.add(className);
 		},
+		/**
+		 * Remove a css class from a specific element
+		 * @param {Object} element   Element to remove the class
+		 * @param {String} className class to remove
+		 */
 		removeClass(element, className) {
 			element.classList.remove(className);
 		}
@@ -158,6 +176,10 @@
 			}
 		}
 	};
+	/**
+	 * Singleton with event listeners
+	 * @type {Object}
+	 */
 	var Events = {
 		onClickNav(event){
 			let el = event.target;
@@ -186,6 +208,6 @@
 			Nav.toggleMobileMenu();
 		}
 	};
-
-	window.addEventListener('load', loadFn);
+	//When the DOMContent is loaded, do the logic
+	document.addEventListener('DOMContentLoaded', loadFn);
 })();

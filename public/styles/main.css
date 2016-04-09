@@ -46,7 +46,7 @@
   .menu { display: inline-block; float: left; }
   .huge-logo { display: none; padding: 20px 0px; height: 20px; width: 50px; }
   .nav-content { position: absolute; padding-left: 0px; top: 60px; left: 0; right: 100%; height: calc(100vh -  60px ); background-color: #fff; color: #000; overflow-y: auto; transition: right 0.3s; }
-  .nav-content .copyright { position: fixed; bottom: 0; margin-left: 0; left: 0; right: 100%; background-color: #fff; font: 12px/16px "Helvetica Neue Regular"; line-height: 48px; transition: all 0.3s; white-space: nowrap; overflow: hidden; display: inline-block; }
+  .nav-content .copyright { position: fixed; bottom: 0; margin-left: 0; left: 0; right: 100%; background-color: #fff; border-top: 1px solid gray; font: 12px/16px "Helvetica Neue Regular"; line-height: 48px; transition: all 0.3s; white-space: nowrap; overflow: hidden; display: inline-block; }
   .primary-options { padding-top: 12px; padding-bottom: 48px; }
   .primary-options > li { display: block; }
   .primary-options .primary-nav { padding: 0px 48px 0px 24px; width: calc(100% -  72px ); color: #000; }
@@ -86,4 +86,4 @@ h1 { margin: 50px 24px 0px 24px; color: #000; font: 44px/48px HUGEAvantGardeBold
   .menu-showed #mask, .submenu-showed #mask { display: block; }
   .menu-showed .main-image, .menu-showed h1, .menu-showed .content, .submenu-showed .main-image, .submenu-showed h1, .submenu-showed .content { transform: translateX(calc(100vw -  72px )); } }
 
-/* TODO: - NAV: se solapan cuando el width del navegador estar cerca a 768; - HAMBURGESA: estilo maluco cuando pasa de X a Hamburgesa - abrir submenu en Desktop, go to mobile, cerrar submenu: CIERRA TODO - Organizar JS - Documentar JS - Documentar CSS - Pruebas de unidad? */
+/* TODO: - NAV: se solapan cuando el width del navegador estar cerca a 768; - HAMBURGESA: estilo maluco cuando pasa de X a Hamburgesa - Organizar JS - Documentar JS - Pruebas de unidad? */
