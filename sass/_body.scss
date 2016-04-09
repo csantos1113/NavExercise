@@ -3,6 +3,12 @@
 //@author Cesar A Santos R
 //
 
+//Remove browser style for the body
+body {
+	margin: 0px;
+	background: #fff;
+	color: #fff;
+}
 //Default style for the main image
 .main-image {
 	height: 640px;

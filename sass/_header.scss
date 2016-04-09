@@ -20,6 +20,17 @@
     padding-left: 0;
     list-style: none;
   }
+  //Remove browser style for all anchors into the header
+  a {
+    text-decoration: none;
+    -webkit-tap-highlight-color: $magenta;
+    &:focus {
+      outline: none;
+    }
+    &:active {
+      background-color: inherit;
+    }
+  }
 }
 //Default style for the HUGE logo
 .huge-logo {
@@ -91,7 +102,7 @@
     height: inherit;
     display: inline-block;
     padding: $desktop-padding-header/2 $desktop-padding-header;
-    color: inherit;
+    color: $white;
   }
   & > li {
     display: inline-block;
@@ -206,6 +217,7 @@
     .primary-nav {
       padding: 0px $mobile-width-chevron 0px $mobile-padding-left;
       width: unquote("calc(100% - ")$mobile-width-chevron+$mobile-padding-left unquote(")");
+      color: $black;
 
       &:hover {
         color: initial;
@@ -269,6 +281,7 @@
     //show the container of the nav options
     .nav-content {
       right: $mobile-space-available-body;
+
       //show the copyright
       .copyright {
         right: $mobile-space-available-body;

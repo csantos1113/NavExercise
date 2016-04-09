@@ -4,27 +4,6 @@
  */
 @import "_vars";
 @import "fonts.css";
-
-//
-body {
-	margin: 0px;
-	background: #fff;
-	color: #fff;
-}
-a {
-	text-decoration: none;
-	-webkit-tap-highlight-color: $magenta;
-
-	&:visited {
-		color: white;
-	}
-	&:focus {
-		outline: none;
-	}
-	&:active {
-		background-color: inherit;
-	}
-}
 @import "_header";
 @import "_body";
 
