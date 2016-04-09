@@ -86,4 +86,4 @@ h1 { margin: 50px 24px 0px 24px; color: #000; font: 44px/48px HUGEAvantGardeBold
   .menu-showed #mask, .submenu-showed #mask { display: block; }
   .menu-showed .main-image, .menu-showed h1, .menu-showed .content, .submenu-showed .main-image, .submenu-showed h1, .submenu-showed .content { transform: translateX(calc(100vw -  72px )); } }
 
-/* TODO: - NAV: se solapan cuando el width del navegador estar cerca a 768; - HAMBURGESA: estilo maluco cuando pasa de X a Hamburgesa - Organizar JS - Documentar JS - Pruebas de unidad? */
+/* TODO: - NAV: se solapan cuando el width del navegador estar cerca a 768; - HAMBURGESA: estilo maluco cuando pasa de X a Hamburgesa - Organizar JS - Documentar JS - que hacer con onKeyupNav?? - Pruebas de unidad? */
