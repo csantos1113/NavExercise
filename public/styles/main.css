@@ -129,13 +129,18 @@ a:active {
   top: 100%;
   left: 0;
   background-color: #fff;
-  display: none;
-  padding-top: 12px;
-  padding-bottom: 12px;
+  transition: all 0.3s;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
-.nav-header .active .secondary-options {
-  display: initial;
+.nav-content .active .secondary-options {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  height: inherit;
+  overflow: auto;
+  max-height: calc(100vh - 72px - 24px );
 }
 
 .secondary-options .secondary-nav {
@@ -216,6 +221,7 @@ a:active {
     position: initial;
     padding-top: initial;
     padding-bottom: initial;
+    max-height: none;
   }
   .has-children .primary-nav:after {
     content: "\276e";
@@ -227,31 +233,31 @@ a:active {
     transform: rotate(-90deg);
     transition: transform 0.3s;
   }
-  .menu-showed .huge-logo {
+  .menu-showed .huge-logo, .submenu-showed .huge-logo {
     display: inline-block;
     padding: 20px 0px;
     height: 20px;
     width: 50px;
   }
-  .menu-showed .menu {
+  .menu-showed .menu, .submenu-showed .menu {
     float: right;
     margin: 0px 24px;
   }
-  .menu-showed .menu span {
+  .menu-showed .menu span, .submenu-showed .menu span {
     background: 0 0;
   }
-  .menu-showed .menu span:before {
+  .menu-showed .menu span:before, .submenu-showed .menu span:before {
     top: 0;
     transform: rotate(45deg);
   }
-  .menu-showed .menu span:after {
+  .menu-showed .menu span:after, .submenu-showed .menu span:after {
     top: 0;
     transform: rotate(-45deg);
   }
-  .menu-showed .nav-content {
+  .menu-showed .nav-content, .submenu-showed .nav-content {
     right: 72px;
   }
-  .menu-showed .nav-content .copyright {
+  .menu-showed .nav-content .copyright, .submenu-showed .nav-content .copyright {
     right: 72px;
     margin-left: 24px;
   }
@@ -293,6 +299,10 @@ h1 {
   display: block;
 }
 
+.menu-showed, .submenu-showed {
+  overflow: hidden;
+}
+
 @media only screen and (min-width: 768px) {
   h1 {
     font: 120px/132px HUGEAvantGardeBold;
@@ -316,14 +326,14 @@ h1 {
     margin: 50px 24px;
     font: 14px/24px Galaxie;
   }
-  .menu-showed #mask, .submenu-showed #mask {
-    display: block;
-  }
   .primary-image, h1, .content {
     transform: translateX(0);
     transition: transform 0.3s;
   }
-  .menu-showed .primary-image, .menu-showed h1, .menu-showed .content {
+  .menu-showed #mask, .submenu-showed #mask {
+    display: block;
+  }
+  .menu-showed .primary-image, .menu-showed h1, .menu-showed .content, .submenu-showed .primary-image, .submenu-showed h1, .submenu-showed .content {
     transform: translateX(calc(100vw -  72px ));
   }
 }
@@ -333,5 +343,7 @@ TODO:
 - NAV: se solapan cuando el width del navegador estar cerca a 768;
 - HAMBURGESA: estilo maluco cuando pasa de X a Hamburgesa
 - PRIMARY_NAV: en celular, clickear para cerrar el submenu, cierra todo;
-- BODY: empujar contenido
+
+click en burger o en logo quitar MENU y SUBMENU... suerte agonias
+click en link: poner o poner SUBMENU
  */

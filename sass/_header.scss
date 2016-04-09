@@ -96,12 +96,17 @@
   top: 100%;
   left: 0;
   background-color: $white;
-  display: none;
-  padding-top: $desktop-padding-top-bottom-second-panel;
-  padding-bottom: $desktop-padding-top-bottom-second-panel;
+  transition: all 0.3s;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
 
-  .nav-header .active & {
-    display: initial;
+  .nav-content .active & {
+    padding-top: $desktop-padding-top-bottom-second-panel;
+    padding-bottom: $desktop-padding-top-bottom-second-panel;
+    height: inherit;
+    overflow: auto;
+    max-height: unquote("calc(100vh -") $desktop-height-header unquote("-") $desktop-padding-top-bottom-second-panel * 2 unquote(")");
   }
   .secondary-nav {
     display: inline-block;
@@ -187,6 +192,7 @@
         position: initial;
         padding-top: initial;
         padding-bottom: initial;
+        max-height:none;
       }
     }
   }
@@ -200,7 +206,7 @@
     transform: rotate($mobile-degree-chevron);
     transition: transform 0.3s;
   }
-  .menu-showed {
+  .menu-showed, .submenu-showed {
     .huge-logo {
       display: inline-block;
       padding: $mobile-padding-top-bottom-header 0px;

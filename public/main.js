@@ -11,19 +11,19 @@
 		SUBMENU_SHOWED = 'submenu-showed';
 	var cacheElements = {
 		primarySelected: null,
-		navHeader: null,
-		body: null,
-		isMobile: false
+		navContent: null,
+		body: null
 	};
-
-	function addClass() {
-		var element = Array.prototype.shift.call(arguments, 1);
-		element.classList.add(...arguments);
-	}
-
-	function removeClass() {
-		var element = Array.prototype.shift.call(arguments, 1);
-		element.classList.remove(...arguments);
+	var Util = {
+		isMobile: () => cacheElements.navContentStyle.display === 'block',
+		addClass: (...args) => {
+			var element = Array.prototype.shift.call(args, 1);
+			element.classList.add(args);
+		},
+		removeClass: (...args) => {
+			var element = Array.prototype.shift.call(args, 1);
+			element.classList.remove(args);
+		}
 	}
 
 	function loadFn() {
@@ -35,28 +35,22 @@
 	}
 
 	function saveElementsCached() {
-		cacheElements.navHeader = document.getElementsByClassName("nav-header")[0];
+		cacheElements.navContentStyle = getComputedStyle(document.getElementsByClassName("nav-content")[0]);
 	}
 
 	function processBody() {
 		let body = cacheElements.body = document.body;
-		body.locked = function(additionalClass) {
-			addClass(body, MENU_SHOWED);
-			if (additionalClass) {
-				addClass(body, additionalClass);
-			}
+		body.locked = function(className = MENU_SHOWED) {
+			Util.addClass(body, className);
 		};
-		body.unlocked = function(additionalClass) {
-			removeClass(body, MENU_SHOWED);
-			if (additionalClass) {
-				removeClass(body, additionalClass);
-			}
+		body.unlocked = function(className = MENU_SHOWED) {
+			Util.removeClass(body, className);
 		};
-		document.getElementById('mask').addEventListener('click', Nav.hideMenu);
+		document.getElementById('mask').addEventListener('click', Nav.hideAll);
 	}
 
 	function processLogo() {
-		document.getElementById('huge-logo').addEventListener('click', Nav.hideMenu);
+		document.getElementById('huge-logo').addEventListener('click', Nav.hideAll);
 	};
 
 	function processCopyright() {
@@ -65,9 +59,7 @@
 	}
 	var Nav = {
 		load: () => {
-			Nav.get().then(Nav.build.bind(Nav)).catch(errorMsg => {
-				console.error(errorMsg);
-			});
+			Nav.get().then(Nav.build.bind(Nav));
 		},
 		get: () => {
 			return new Promise((resolve, reject) => {
@@ -105,12 +97,12 @@
 				item = this.createOption(itemData);
 				if (childrenNumber > 0) {
 					subMenu = document.createElement('ul');
-					addClass(subMenu, SECONDARY_UNORDERED_LIST);
+					Util.addClass(subMenu, SECONDARY_UNORDERED_LIST);
 					for (var j = 0; j < children.length; j++) {
 						subMenu.appendChild(this.createOption(children[j], true));
 					}
 					item.appendChild(subMenu);
-					addClass(item, HAS_CHILDREN);
+					Util.addClass(item, HAS_CHILDREN);
 				}
 				navOptions.appendChild(item);
 			}
@@ -118,37 +110,44 @@
 			navOptions.addEventListener('keyup', Events.onKeyupNav.bind(Events));
 			document.getElementById('menu-mobile').addEventListener('click', Events.onMenuMobileClick);
 		},
-		hideMenu: function(removeMask) {
+		hideAll: function() {
+			Nav.hideSubMenu(true);
+			cacheElements.body.unlocked();
+			cacheElements.body.unlocked(SUBMENU_SHOWED);
+		},
+		hideSubMenu: function(removeMask) {
 			if (cacheElements.primarySelected) {
-				removeClass(cacheElements.primarySelected, ACTIVE_CLASS);
+				Util.removeClass(cacheElements.primarySelected, ACTIVE_CLASS);
 				delete cacheElements.primarySelected;
 			}
 			if (removeMask) {
+				if (Util.isMobile()) {
+					cacheElements.body.locked();
+				}
 				cacheElements.body.unlocked(SUBMENU_SHOWED);
 			}
 		},
-		activateMenu: function(primaryNav) {
+		activateSubMenu: function(primaryNav) {
 			let primaryItem = primaryNav.parentNode,
 				hasSubMenu = !!primaryNav.nextSibling,
 				normalBehaivor = !hasSubMenu;
 			//clicked the same primary nav
 			if (cacheElements.primarySelected == primaryItem) {
-				this.hideMenu(true);
+				this.hideSubMenu(true);
 				return normalBehaivor;
 			}
-			this.hideMenu(normalBehaivor);
+			this.hideSubMenu(normalBehaivor);
 			if (hasSubMenu) {
-				addClass(primaryItem, ACTIVE_CLASS);
+				Util.addClass(primaryItem, ACTIVE_CLASS);
 				cacheElements.primarySelected = primaryItem;
 				cacheElements.body.locked(SUBMENU_SHOWED);
 			}
 			return normalBehaivor;
 		},
 		toggleMobileMenu: function() {
-			let classList = cacheElements.body.classList,
-				className = MENU_SHOWED;
-			if (classList.contains(className)) {
-				this.hideMenu(true);
+			let classList = cacheElements.body.classList;
+			if (classList.contains(MENU_SHOWED) || classList.contains(SUBMENU_SHOWED)) {
+				this.hideAll();
 			} else {
 				cacheElements.body.locked();
 			}
@@ -159,11 +158,12 @@
 			var el = event.target;
 			if (el.tagName == 'A') {
 				if (el.classList.contains(PRIMARY_ANCHOR)) {
-					if (!Nav.activateMenu(el)) {
+					if (!Nav.activateSubMenu(el)) {
 						event.preventDefault();
 					}
 				} else {
-					Nav.hideMenu(true);
+					//Cualquier otro link que se toque, se debe ocultar todo
+					Nav.hideAll();
 				}
 			}
 		},
