@@ -59,7 +59,7 @@
 	}
 	var Nav = {
 		load: () => {
-			Nav.get().then(Nav.build.bind(Nav));
+			Nav.get().then(Nav.build.bind(Nav)).catch(errorMsg => console.error(errorMsg));
 		},
 		get: () => {
 			return new Promise((resolve, reject) => {
