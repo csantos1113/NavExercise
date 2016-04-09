@@ -15,11 +15,13 @@
 		body: null
 	};
 	var Util = {
-		isMobile: () => cacheEl.navContentStyle.display === 'block',
-		addClass: (element, className) => {
+		isMobile() {
+			cacheEl.navContentStyle.display === 'block'
+		},
+		addClass(element, className) {
 			element.classList.add(className);
 		},
-		removeClass: (element, className) => {
+		removeClass(element, className) {
 			element.classList.remove(className);
 		}
 	}
@@ -56,10 +58,10 @@
 		processCopyright();
 	}
 	var Nav = {
-		load: () => {
-			Nav.get().then(Nav.build).catch(errorMsg => console.error(errorMsg));
-		},
-		get: () => {
+		load() {
+				Nav.get().then(Nav.build).catch(errorMsg => console.error(errorMsg));
+			},
+		get() {
 			return new Promise((resolve, reject) => {
 				let xmlhttp = new XMLHttpRequest();
 				xmlhttp.open("GET", './api/nav.json');
@@ -76,12 +78,12 @@
 			});
 
 		},
-		createOption: (data, secondary = false) => {
+		createOption(data, secondary = false) {
 			let item = document.createElement('li');
 			item.innerHTML = '<a class="' + (secondary ? SECONDARY_ANCHOR : PRIMARY_ANCHOR) + '" href="' + data.url + '">' + data.label + '</a>';
 			return item;
 		},
-		build: (items) => {
+		build(items) {
 			let itemData,
 				item,
 				children,
@@ -108,12 +110,12 @@
 			navOptions.addEventListener('keyup', Events.onKeyupNav.bind(Events));
 			document.getElementById('menu-mobile').addEventListener('click', Events.onMenuMobileClick);
 		},
-		hideAll: () => {
+		hideAll(){
 			Nav.hideSubMenu(true);
 			cacheEl.body.unlocked();
 			cacheEl.body.unlocked(SUBMENU_SHOWED);
 		},
-		hideSubMenu: (removeMask = false) => {
+		hideSubMenu(removeMask = false){
 			if (cacheEl.primarySelected) {
 				Util.removeClass(cacheEl.primarySelected, ACTIVE_CLASS);
 				delete cacheEl.primarySelected;
@@ -125,7 +127,7 @@
 				cacheEl.body.unlocked(SUBMENU_SHOWED);
 			}
 		},
-		activateSubMenu: (primaryNav) => {
+		activateSubMenu(primaryNav){
 			if (!primaryNav)
 				return;
 			let primaryItem = primaryNav.parentNode,
@@ -141,10 +143,12 @@
 				Util.addClass(primaryItem, ACTIVE_CLASS);
 				cacheEl.primarySelected = primaryItem;
 				cacheEl.body.locked(SUBMENU_SHOWED);
+			} else {
+				cacheEl.body.unlocked();
 			}
 			return normalBehaivor;
 		},
-		toggleMobileMenu: () => {
+		toggleMobileMenu(){
 			let body = cacheEl.body,
 				classList = body.classList;
 			if (classList.contains(MENU_SHOWED) || classList.contains(SUBMENU_SHOWED)) {
@@ -155,7 +159,7 @@
 		}
 	};
 	var Events = {
-		onClickNav: (event) => {
+		onClickNav(event){
 			let el = event.target;
 			if (el.tagName == 'A') {
 				if (el.classList.contains(PRIMARY_ANCHOR)) {
@@ -168,7 +172,7 @@
 				}
 			}
 		},
-		onKeyupNav: (event) => {
+		onKeyupNav (event) {
 			console.warn('Experimental test');
 			let el = event.target;
 			event.preventDefault();
@@ -177,7 +181,7 @@
 			}
 			return false;
 		},
-		onMenuMobileClick: (event) => {
+		onMenuMobileClick (event){
 			event.preventDefault();
 			Nav.toggleMobileMenu();
 		}
