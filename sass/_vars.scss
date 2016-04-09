@@ -1,10 +1,14 @@
-//Measures
-//Desktop
+//
+//SCSS variables for measurements, typography and colors
+//@author Cesar A Santos R
+//
+
+//Measurements
+//Measurements for elements on Desktop devices
 $desktop-width-logo: 60px;
 $desktop-margin-right:48px;
 $desktop-padding-header: 24px;
 $desktop-height-header-content: $desktop-padding-header;
-//padding top + padding bottom + height content
 $desktop-height-header: $desktop-padding-header * 2 + $desktop-height-header-content;
 $desktop-padding-first-nav: $desktop-padding-header;
 $desktop-padding-right-left-second-nav: $desktop-padding-first-nav;
@@ -13,13 +17,12 @@ $desktop-height-second-nav: 48px;
 $desktop-height-image: 640px;
 $desktop-margin-top-content: 60px;
 $desktop-width-content: 968px;
-//Mobile
+//Measurements for elements on Mobile devices
 $mobile-width-logo: 50px;
 $mobile-width-menu-icon: 24px;
 $mobile-padding-left: 24px;
 $mobile-padding-top-bottom-header: 20px;
 $mobile-height-header-content: $mobile-padding-top-bottom-header;
-//padding top + padding bottom + height content
 $mobile-height-header: $mobile-padding-top-bottom-header * 2 + $mobile-height-header-content;
 $mobile-menu-portion: $mobile-height-header-content/5;
 $mobile-padding-top-first-panel: 12px;
@@ -42,7 +45,7 @@ $mobile-font-headline: 44px/48px HUGEAvantGardeBold;
 $mobile-font-body: 14px/24px Galaxie;
 $mobile-copyright: 12px/16px "Helvetica Neue Regular";
 
-//Color
+//Colors
 $magenta: #ec008c;
 $light-gray: #eee;
 $translucent-black: rgba(0, 0, 0, 0.5);

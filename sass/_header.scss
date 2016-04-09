@@ -1,3 +1,10 @@
+//
+//Styles for the header, logo, menu icon 
+//and navigation elements
+//@author Cesar A Santos R
+//
+
+//Default style for the navigation bar
 .nav-header {
   background-color: $magenta;
   padding: 0px;
@@ -7,12 +14,14 @@
   margin-top: -1 * $desktop-height-header;
   padding-left: $desktop-padding-header;
 
+  //remove browser style for the unordered list
   ul {
     margin: 0;
     padding-left: 0;
     list-style: none;
   }
 }
+//Default style for the HUGE logo
 .huge-logo {
   float: left;
   padding: $desktop-padding-header 0px;
@@ -24,6 +33,7 @@
     width: inherit;
   }
 }
+//Default style for the menu icon "hamburger"
 .menu {
   width: $mobile-width-menu-icon;
   height: $mobile-height-header-content;
@@ -64,14 +74,18 @@
     transition-delay: 0s, .3s;
   }
 }
+//Default style for the container of the nav options
 .nav-content {
   display: inline-block;
 
+  //Hide the copyright element
   .copyright {
     display: none;
   }
 }
+//Default style for the list of main links
 .primary-options {
+  //Default style for each main link
   .primary-nav {
     font: $font-first-nav;
     height: inherit;
@@ -83,6 +97,7 @@
     display: inline-block;
     position: relative;
   }
+  //Default style for main link hovered or activated 
   .primary-nav:hover, .active .primary-nav
 
   /* , .primary-nav:focus */
@@ -91,6 +106,7 @@
     background-color: $white;
   }
 }
+//Default style for the list of secondary links
 .secondary-options {
   position: absolute;
   top: 100%;
@@ -101,6 +117,7 @@
   padding: 0;
   overflow: hidden;
 
+  //Default style for the list of secondary links when their main link is activated
   .nav-content .active & {
     padding-top: $desktop-padding-top-bottom-second-panel;
     padding-bottom: $desktop-padding-top-bottom-second-panel;
@@ -108,6 +125,7 @@
     overflow: auto;
     max-height: unquote("calc(100vh -") $desktop-height-header unquote("-") $desktop-padding-top-bottom-second-panel * 2 unquote(")");
   }
+  //Default style for each secondary link
   .secondary-nav {
     display: inline-block;
     white-space: nowrap;
@@ -116,6 +134,7 @@
     color: $black;
     width: unquote("calc(100% -")$desktop-padding-right-left-second-nav*2 unquote(")");
 
+    //Default style for secondary link hovered
     &:hover
 
     /* , &:focus */
@@ -125,10 +144,28 @@
     }
   }
 }
+//Specific styles for Phone devices
 @media only screen and (max-width:768px) {
+  //Change the size of the navigation bar
+  .nav-header {
+    margin-top: -1 * $mobile-height-header;
+    height: $mobile-height-header;
+    padding-left: $mobile-padding-left;
+  }
+  //Show the menu icon "hamburger"
+  .menu {
+    display: inline-block;
+    float: left;
+  }
+  //Change the logo style and hide it
   .huge-logo {
     display: none;
+    padding: $mobile-padding-top-bottom-header 0px;
+    height: $mobile-height-header-content;
+    width: $mobile-width-logo;
   }
+  //Change the style for the container of the nav options.
+  //Move it for the left side
   .nav-content {
     position: absolute;
     padding-left: 0px;
@@ -141,6 +178,7 @@
     overflow-y: auto;
     transition: right 0.3s;
 
+    //Show the copyright
     .copyright {
       position: fixed;
       bottom: 0;
@@ -156,15 +194,7 @@
       display: inline-block;
     }
   }
-  .nav-header {
-    margin-top: -1 * $mobile-height-header;
-    height: $mobile-height-header;
-    padding-left: $mobile-padding-left;
-  }
-  .menu {
-    display: inline-block;
-    float: left;
-  }
+  //Change the style of the list of main links
   .primary-options {
     padding-top: $mobile-padding-top-first-panel;
     padding-bottom: $mobile-padding-bottom-first-panel;
@@ -172,6 +202,7 @@
     & > li {
       display: block;
     }
+    //Change the style for each main link
     .primary-nav {
       padding: 0px $mobile-width-chevron 0px $mobile-padding-left;
       width: unquote("calc(100% - ")$mobile-width-chevron+$mobile-padding-left unquote(")");
@@ -181,38 +212,43 @@
         background-color: $light-gray;
       }
     }
+    //Show a chevron on main links who has secondary links (collapsed)
+    .has-children .primary-nav:after {
+      content: "\276e";
+      color: $magenta;
+      position: absolute;
+      right: 0;
+      width: $mobile-width-chevron;
+      text-align: center;
+      transform: rotate($mobile-degree-chevron);
+      transition: transform 0.3s;
+    }
+    //Change the style for main link activated
     .active {
+      //Keep the same initial color
       .primary-nav {
         color: initial;
       }
+      //Animate the chevron (uncollapsed)
       &.has-children .primary-nav:after {
         transform: rotate($mobile-degree-rotation-chevron);
       }
+      //Put the list of secondary links below the main link
       .secondary-options {
         position: initial;
         padding-top: initial;
         padding-bottom: initial;
-        max-height:none;
+        max-height: none;
       }
     }
   }
-  .has-children .primary-nav:after {
-    content: "\276e";
-    color: $magenta;
-    position: absolute;
-    right: 0;
-    width: $mobile-width-chevron;
-    text-align: center;
-    transform: rotate($mobile-degree-chevron);
-    transition: transform 0.3s;
-  }
+  //When the menu or sub-menu is showed
   .menu-showed, .submenu-showed {
+    //Show the logo
     .huge-logo {
       display: inline-block;
-      padding: $mobile-padding-top-bottom-header 0px;
-      height: $mobile-height-header-content;
-      width: $mobile-width-logo;
     }
+    //Change the "hamburger" icon to "close" icon
     .menu {
       float: right;
       margin: 0px $mobile-padding-left-right-menu-icon;
@@ -230,9 +266,10 @@
         }
       }
     }
+    //show the container of the nav options
     .nav-content {
       right: $mobile-space-available-body;
-
+      //show the copyright
       .copyright {
         right: $mobile-space-available-body;
         margin-left: $mobile-padding-left;

@@ -16,7 +16,7 @@
 	};
 	var Util = {
 		isMobile() {
-			cacheEl.navContentStyle.display === 'block'
+			return cacheEl.navContentStyle.display === 'block';
 		},
 		addClass(element, className) {
 			element.classList.add(className);

@@ -1,18 +1,19 @@
+/**
+ * Styles generated from scss files
+ * @author Cesar A Santos R
+ */
 @import "_vars";
 @import "fonts.css";
 
+//
 body {
 	margin: 0px;
 	background: #fff;
 	color: #fff;
-
-	&.menu-showed {
-		overflow: hidden;
-	}
 }
 a {
 	text-decoration: none;
-	-webkit-tap-highlight-color:$magenta;
+	-webkit-tap-highlight-color: $magenta;
 
 	&:visited {
 		color: white;
@@ -31,6 +32,7 @@ a {
 TODO:
 - NAV: se solapan cuando el width del navegador estar cerca a 768;
 - HAMBURGESA: estilo maluco cuando pasa de X a Hamburgesa
+- abrir submenu en Desktop, go to mobile, cerrar submenu: CIERRA TODO
 - Organizar JS
 - Documentar JS
 - Documentar CSS

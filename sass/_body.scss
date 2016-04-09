@@ -1,9 +1,16 @@
-.primary-image {
+//
+//Styles for body elements
+//@author Cesar A Santos R
+//
+
+//Default style for the main image
+.main-image {
 	height: 640px;
 	background-image: url(../images/background-image.jpg);
 	background-size: cover;
 	margin-top: $desktop-height-header;
 }
+//Default style for the main phrase.
 h1 {
 	margin: $mobile-padding-top-title $mobile-padding-left 0px $mobile-padding-left;
 	color: $black;
@@ -11,12 +18,14 @@ h1 {
 	letter-spacing: -0.06em;
 	text-align: left;
 }
+//Default style for the content
 .content {
 	margin: $desktop-margin-top-content auto;
 	max-width: $desktop-width-content;
 	color: $black;
 	font: $desktop-font-body;
 }
+//Default style for the translucent mask
 #mask {
 	position: fixed;
 	top: 0;
@@ -25,47 +34,56 @@ h1 {
 	bottom: 0;
 	background-color: $translucent-black;
 	display: none;
-
+	//Show the mask when the parent is showing a sub-menu
 	.submenu-showed & {
 		display: block;
 	}
 }
-.menu-showed, .submenu-showed {
+//avoid scrolling when a sub-menu is visible
+.submenu-showed {
 	overflow: hidden;
 }
-//Desktop
+//Specific styles for Desktop devices
 @media only screen and (min-width:768px) {
+	//Change the style for the main phrase.
 	h1 {
 		font: $desktop-font-headline;
-		margin: 0;
 		position: absolute;
 		top: 50%;
 		left: 50%;
-		-webkit-transform: translate(-50%, -50%);
+		margin: 0;
 		transform: translate(-50%, -50%);
 		color: $white;
 		text-align: center;
 	}
 }
-//Phone
+//Specific styles for Phone devices
 @media only screen and (max-width:768px) {
-	.primary-image {
+	//set style for the main image
+	.main-image {
 		height: $mobile-height-image;
 		margin-top: $mobile-height-header;
 	}
+	//set style for the content
 	.content {
 		margin: $mobile-padding-top-content $mobile-padding-left;
 		font: $mobile-font-body;
 	}
-	.primary-image, h1, .content {
+	//add animations to the body elements. Used when the menu is displayed
+	.main-image, h1, .content {
 		transform: translateX(0);
 		transition: transform 0.3s;
 	}
+	//When the menu or sub-menu is showed
 	.menu-showed, .submenu-showed {
+		//avoid scrolling
+		overflow: hidden;
+		//show the translucent mask
 		#mask {
 			display: block;
 		}
-		.primary-image, h1, .content {
+		//translate the body elements
+		.main-image, h1, .content {
 			transform: translateX(unquote("calc(100vw - ")$mobile-space-available-body unquote(")"));
 		}
 	}
