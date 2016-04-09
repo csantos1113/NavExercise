@@ -7,7 +7,8 @@
 		PRIMARY_ANCHOR = 'primary-nav',
 		SECONDARY_ANCHOR = 'secondary-nav',
 		ACTIVE_CLASS = 'active',
-		MENU_SHOWED = 'menu-showed';
+		MENU_SHOWED = 'menu-showed',
+		SUBMENU_SHOWED = 'submenu-showed';
 	var cacheElements = {
 		primarySelected: null,
 		navHeader: null,
@@ -39,11 +40,17 @@
 
 	function processBody() {
 		let body = cacheElements.body = document.body;
-		body.locked = function() {
+		body.locked = function(additionalClass) {
 			addClass(body, MENU_SHOWED);
+			if (additionalClass) {
+				addClass(body, additionalClass);
+			}
 		};
-		body.unlocked = function() {
+		body.unlocked = function(additionalClass) {
 			removeClass(body, MENU_SHOWED);
+			if (additionalClass) {
+				removeClass(body, additionalClass);
+			}
 		};
 		document.getElementById('mask').addEventListener('click', Nav.hideMenu);
 	}
@@ -117,8 +124,7 @@
 				delete cacheElements.primarySelected;
 			}
 			if (removeMask) {
-				cacheElements.body.unlocked();
-				removeClass(cacheElements.navHeader, MENU_SHOWED);
+				cacheElements.body.unlocked(SUBMENU_SHOWED);
 			}
 		},
 		activateMenu: function(primaryNav) {
@@ -133,20 +139,18 @@
 			this.hideMenu(normalBehaivor);
 			if (hasSubMenu) {
 				addClass(primaryItem, ACTIVE_CLASS);
-				addClass(cacheElements.navHeader, MENU_SHOWED);
 				cacheElements.primarySelected = primaryItem;
-				cacheElements.body.locked();
+				cacheElements.body.locked(SUBMENU_SHOWED);
 			}
 			return normalBehaivor;
 		},
 		toggleMobileMenu: function() {
-			let classList = cacheElements.navHeader.classList,
+			let classList = cacheElements.body.classList,
 				className = MENU_SHOWED;
 			if (classList.contains(className)) {
 				this.hideMenu(true);
 			} else {
 				cacheElements.body.locked();
-				classList.toggle(MENU_SHOWED);
 			}
 		}
 	};

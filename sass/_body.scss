@@ -24,9 +24,9 @@ h1 {
 	right: 0;
 	bottom: 0;
 	background-color: $translucent-black;
-	display:none;
+	display: none;
 
-	.menu-showed & {
+	.submenu-showed & {
 		display: block;
 	}
 }
@@ -53,5 +53,10 @@ h1 {
 	.content {
 		margin: $mobile-padding-top-content $mobile-padding-left;
 		font: $mobile-font-body;
+	}
+	.menu-showed, .submenu-showed {
+		#mask {
+			display: block;
+		}
 	}
 }
