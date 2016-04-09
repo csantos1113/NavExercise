@@ -59,4 +59,13 @@ h1 {
 			display: block;
 		}
 	}
+	.primary-image, h1, .content {
+		transform: translateX(0);
+		transition: transform 0.3s;
+	}
+	.menu-showed {
+		.primary-image, h1, .content {
+			transform: translateX(unquote("calc(100vw - ")$mobile-space-available-body unquote(")"));
+		}
+	}
 }

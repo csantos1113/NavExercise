@@ -176,6 +176,19 @@
         background-color: $light-gray;
       }
     }
+    .active {
+      .primary-nav {
+        color: initial;
+      }
+      &.has-children .primary-nav:after {
+        transform: rotate($mobile-degree-rotation-chevron);
+      }
+      .secondary-options {
+        position: initial;
+        padding-top: initial;
+        padding-bottom: initial;
+      }
+    }
   }
   .has-children .primary-nav:after {
     content: "\276e";
@@ -186,19 +199,6 @@
     text-align: center;
     transform: rotate($mobile-degree-chevron);
     transition: transform 0.3s;
-  }
-  .active {
-    .primary-nav {
-      color: initial;
-    }
-    &.has-children .primary-nav:after {
-      transform: rotate($mobile-degree-rotation-chevron);
-    }
-    .secondary-options {
-      position: initial;
-      padding-top: initial;
-      padding-bottom: initial;
-    }
   }
   .menu-showed {
     .huge-logo {

@@ -206,6 +206,17 @@ a:active {
     color: initial;
     background-color: #eee;
   }
+  .primary-options .active .primary-nav {
+    color: initial;
+  }
+  .primary-options .active.has-children .primary-nav:after {
+    transform: rotate(-270deg);
+  }
+  .primary-options .active .secondary-options {
+    position: initial;
+    padding-top: initial;
+    padding-bottom: initial;
+  }
   .has-children .primary-nav:after {
     content: "\276e";
     color: #ec008c;
@@ -215,17 +226,6 @@ a:active {
     text-align: center;
     transform: rotate(-90deg);
     transition: transform 0.3s;
-  }
-  .active .primary-nav {
-    color: initial;
-  }
-  .active.has-children .primary-nav:after {
-    transform: rotate(-270deg);
-  }
-  .active .secondary-options {
-    position: initial;
-    padding-top: initial;
-    padding-bottom: initial;
   }
   .menu-showed .huge-logo {
     display: inline-block;
@@ -319,6 +319,13 @@ h1 {
   .menu-showed #mask, .submenu-showed #mask {
     display: block;
   }
+  .primary-image, h1, .content {
+    transform: translateX(0);
+    transition: transform 0.3s;
+  }
+  .menu-showed .primary-image, .menu-showed h1, .menu-showed .content {
+    transform: translateX(calc(100vw -  72px ));
+  }
 }
 
 /*
@@ -326,6 +333,5 @@ TODO:
 - NAV: se solapan cuando el width del navegador estar cerca a 768;
 - HAMBURGESA: estilo maluco cuando pasa de X a Hamburgesa
 - PRIMARY_NAV: en celular, clickear para cerrar el submenu, cierra todo;
-- CELULAR, ABRIR MENU, Cambiar a DESKTOP: se queda pegada la mascara
 - BODY: empujar contenido
  */
