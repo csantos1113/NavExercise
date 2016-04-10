@@ -18,11 +18,11 @@
 
 .menu span { width: inherit; background-color: #fff; height: 4px; position: relative; display: block; top: 8px; transition: background 0s .3s; }
 
-.menu span:before { content: ""; background-color: #fff; width: 100%; position: absolute; height: inherit; top: -8px; left: 0; transition-property: top, transform; }
+.menu span:before { content: ""; background-color: #fff; width: 100%; position: absolute; height: inherit; top: -8px; left: 0; }
 
-.menu span:after { content: ""; background-color: #fff; width: 100%; position: absolute; height: inherit; top: 8px; left: 0; transition-property: top, transform; }
+.menu span:after { content: ""; background-color: #fff; width: 100%; position: absolute; height: inherit; top: 8px; left: 0; }
 
-.menu span:before, .menu span:after { transition-duration: .3s, .3s; transition-delay: 0s, .3s; }
+.menu span:before, .menu span:after { transition-duration: .3s, .3s; transition-delay: 0s, .3s; transition-property: transform, top; }
 
 .nav-content { display: inline-block; }
 
@@ -60,6 +60,7 @@
   .menu-showed .menu span, .submenu-showed .menu span { background: 0 0; }
   .menu-showed .menu span:before, .submenu-showed .menu span:before { top: 0; transform: rotate(45deg); }
   .menu-showed .menu span:after, .submenu-showed .menu span:after { top: 0; transform: rotate(-45deg); }
+  .menu-showed .menu span:before, .menu-showed .menu span:after, .submenu-showed .menu span:before, .submenu-showed .menu span:after { transition-property: top, transform; }
   .menu-showed .nav-content, .submenu-showed .nav-content { right: 72px; }
   .menu-showed .nav-content .copyright, .submenu-showed .nav-content .copyright { right: 72px; margin-left: 24px; } }
 
@@ -86,4 +87,4 @@ h1 { margin: 50px 24px 0px 24px; color: #000; font: 44px/48px HUGEAvantGardeBold
   .menu-showed #mask, .submenu-showed #mask { display: block; }
   .menu-showed .main-image, .menu-showed h1, .menu-showed .content, .submenu-showed .main-image, .submenu-showed h1, .submenu-showed .content { transform: translateX(calc(100vw -  72px )); } }
 
-/* TODO: - NAV: se solapan cuando el width del navegador estar cerca a 768; - HAMBURGESA: estilo maluco cuando pasa de X a Hamburgesa - Organizar JS - Documentar JS - que hacer con onKeyupNav?? - Pruebas de unidad? */
+/* TODO: - NAV: se solapan cuando el width del navegador estar cerca a 768; - HAMBURGESA: estilo maluco cuando pasa de X a Hamburgesa - Organizar JS - que hacer con onKeyupNav?? - Pruebas de unidad? */

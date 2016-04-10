@@ -68,7 +68,6 @@
     height: inherit;
     top: $mobile-menu-portion * -2;
     left: 0;
-    transition-property: top, transform;
   }
   span:after {
     content: "";
@@ -78,11 +77,11 @@
     height: inherit;
     top: $mobile-menu-portion * 2;
     left: 0;
-    transition-property: top, transform;
   }
   span:before, span:after {
     transition-duration: .3s, .3s;
     transition-delay: 0s, .3s;
+    transition-property: transform, top;
   }
 }
 //Default style for the container of the nav options
@@ -276,6 +275,9 @@
         &:after {
           top: 0;
           transform: rotate(-45deg);
+        }
+        &:before, &:after{
+          transition-property: top, transform;
         }
       }
     }
