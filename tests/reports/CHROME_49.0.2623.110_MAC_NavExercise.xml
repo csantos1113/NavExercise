@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="9">
+
+  <testsuite name="NavExercise"
+    errors="0" failures="0" hostname="" id="" package="NavExercise" skipped="0"
+    tests="9" time="11.91" timestamp="Sun, 10 Apr 2016 23:19:27 GMT">
+  
+    <testcase name="Phone mode. Initial status" time="2.503" assertions="6">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Phone mode. Open menu" time="0.8690" assertions="5">
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Phone mode. Menu opened. Primary navigation link item" time="0.9080" assertions="5">
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Phone mode. Menu opened. Primary navigation menu item" time="1.990" assertions="1">
+
+    
+    </testcase>
+  
+    <testcase name="Phone mode. Menu opened. Secondary navigation link item" time="1.407" assertions="5">
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Phone mode. Menu opened. Close menu from X icon" time="1.197" assertions="4">
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Phone mode. Menu opened. Close menu from HUGE logo" time="1.240" assertions="4">
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Phone mode. Menu opened. Close menu from mask" time="1.226" assertions="4">
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Desktop mode. Initial status" time="0.5750" assertions="0">
+    </testcase>
+  
+  
+  </testsuite>
+</testsuites>
