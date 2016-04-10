@@ -10,7 +10,7 @@
   padding: 0px;
   position: fixed;
   z-index: 3;
-  width: unquote("calc(100% -")$desktop-padding-header unquote(")");
+  width: unquote("calc(100vw -")$desktop-padding-header unquote(")");
   margin-top: -1 * $desktop-height-header;
   padding-left: $desktop-padding-header;
 

@@ -1,6 +1,6 @@
 /** Styles generated from scss files @author Cesar A Santos R */
 @import url(fonts.css);
-.nav-header { background-color: #ec008c; padding: 0px; position: fixed; z-index: 3; width: calc(100% - 24px ); margin-top: -72px; padding-left: 24px; }
+.nav-header { background-color: #ec008c; padding: 0px; position: fixed; z-index: 3; width: calc(100vw - 24px ); margin-top: -72px; padding-left: 24px; }
 
 .nav-header ul { margin: 0; padding-left: 0; list-style: none; }
 
@@ -66,7 +66,9 @@
 
 body { margin: 0px; background: #fff; color: #fff; }
 
-.main-image { height: 640px; background-image: url(../images/background-image.jpg); background-size: cover; margin-top: 72px; }
+.wrapper { margin-top: 72px; }
+
+.main-image { height: 640px; background-image: url(../images/background-image.jpg); background-size: cover; }
 
 h1 { margin: 50px 24px 0px 24px; color: #000; font: 44px/48px HUGEAvantGardeBold; letter-spacing: -0.06em; text-align: left; }
 
@@ -76,15 +78,16 @@ h1 { margin: 50px 24px 0px 24px; color: #000; font: 44px/48px HUGEAvantGardeBold
 
 .submenu-showed #mask { display: block; }
 
-.submenu-showed { overflow: hidden; }
+.submenu-showed .wrapper { overflow: hidden; }
 
 @media only screen and (min-width: 768px) { h1 { font: 120px/132px HUGEAvantGardeBold; position: absolute; top: 50%; left: 50%; margin: 0; transform: translate(-50%, -50%); color: #fff; text-align: center; } }
 
-@media only screen and (max-width: 768px) { .main-image { height: 240px; margin-top: 60px; }
+@media only screen and (max-width: 768px) { .wrapper { margin-top: 60px; }
+  .main-image { height: 240px; }
   .content { margin: 50px 24px; font: 14px/24px Galaxie; }
   .main-image, h1, .content { transform: translateX(0); transition: transform 0.3s; }
-  .menu-showed, .submenu-showed { overflow: hidden; }
+  .menu-showed .wrapper, .submenu-showed .wrapper { overflow: hidden; height: calc(100vh -  60px ); }
   .menu-showed #mask, .submenu-showed #mask { display: block; }
   .menu-showed .main-image, .menu-showed h1, .menu-showed .content, .submenu-showed .main-image, .submenu-showed h1, .submenu-showed .content { transform: translateX(calc(100vw -  72px )); } }
 
-/* TODO: - NAV: se solapan cuando el width del navegador estar cerca a 768; - HAMBURGESA: estilo maluco cuando pasa de X a Hamburgesa - Organizar JS - que hacer con onKeyupNav?? - Pruebas de unidad? */
+/* TODO: - NAV: se solapan cuando el width del navegador estar cerca a 768; - que hacer con onKeyupNav?? - Pruebas de unidad? - Pruebas e2e? - Bug menu en celular... la mascara no evita que se haga scroll */
