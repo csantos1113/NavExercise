@@ -117,7 +117,6 @@
 				navOptions.appendChild(item);
 			}
 			navOptions.addEventListener('click', Events.onClickNav);
-			navOptions.addEventListener('keyup', Events.onKeyupNav.bind(Events));
 			document.getElementById('menu-mobile').addEventListener('click', Events.onMenuMobileClick);
 		},
 		/**
@@ -233,15 +232,6 @@
 					Nav.hideAll();
 				}
 			}
-		},
-		onKeyupNav(event) {
-			console.warn('Experimental test');
-			let el = event.target;
-			event.preventDefault();
-			if (event.keyCode == 13) {
-				Events.onClickNav(event);
-			}
-			return false;
 		},
 		/**
 		 * Manage the click event on the menu icon "hamburger".
