@@ -5,9 +5,9 @@
 
   <testsuite name="NavExercise"
     errors="0" failures="0" hostname="" id="" package="NavExercise" skipped="0"
-    tests="14" time="21.14" timestamp="Mon, 11 Apr 2016 02:29:06 GMT">
+    tests="14" time="20.79" timestamp="Mon, 11 Apr 2016 14:19:56 GMT">
   
-    <testcase name="Phone mode. Initial status" time="3.087" assertions="6">
+    <testcase name="Phone mode. Initial status" time="3.148" assertions="6">
 
     
 
@@ -22,7 +22,7 @@
     
     </testcase>
   
-    <testcase name="Phone mode. Open menu" time="0.9120" assertions="5">
+    <testcase name="Phone mode. Open menu" time="0.9190" assertions="5">
 
     
 
@@ -35,7 +35,7 @@
     
     </testcase>
   
-    <testcase name="Phone mode. Menu opened. Primary navigation link item" time="0.9410" assertions="5">
+    <testcase name="Phone mode. Menu opened. Primary navigation link item" time="0.9430" assertions="5">
 
     
 
@@ -48,62 +48,14 @@
     
     </testcase>
   
-    <testcase name="Phone mode. Menu opened. Primary navigation menu item" time="2.088" assertions="2">
+    <testcase name="Phone mode. Menu opened. Primary navigation menu item" time="2.059" assertions="2">
 
     
 
     
     </testcase>
   
-    <testcase name="Phone mode. Menu opened. Secondary navigation link item" time="1.450" assertions="5">
-
-    
-
-    
-
-    
-
-    
-
-    
-    </testcase>
-  
-    <testcase name="Phone mode. Menu opened. Close menu from X icon" time="1.236" assertions="4">
-
-    
-
-    
-
-    
-
-    
-    </testcase>
-  
-    <testcase name="Phone mode. Menu opened. Close menu from HUGE logo" time="1.297" assertions="4">
-
-    
-
-    
-
-    
-
-    
-    </testcase>
-  
-    <testcase name="Phone mode. Menu opened. Close menu from mask" time="1.229" assertions="4">
-
-    
-
-    
-
-    
-
-    
-    </testcase>
-  
-    <testcase name="Desktop mode. Initial status" time="1.375" assertions="6">
-
-    
+    <testcase name="Phone mode. Menu opened. Secondary navigation link item" time="1.441" assertions="5">
 
     
 
@@ -116,16 +68,7 @@
     
     </testcase>
   
-    <testcase name="Desktop mode. Primary navigation link item" time="1.158" assertions="3">
-
-    
-
-    
-
-    
-    </testcase>
-  
-    <testcase name="Desktop mode. Primary navigation menu item" time="2.266" assertions="4">
+    <testcase name="Phone mode. Menu opened. Close menu from X icon" time="1.201" assertions="4">
 
     
 
@@ -136,7 +79,20 @@
     
     </testcase>
   
-    <testcase name="Desktop mode. Secondary navigation link item" time="1.766" assertions="3">
+    <testcase name="Phone mode. Menu opened. Close menu from HUGE logo" time="1.252" assertions="4">
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Phone mode. Menu opened. Close menu from mask" time="1.218" assertions="4">
+
+    
 
     
 
@@ -145,14 +101,58 @@
     
     </testcase>
   
-    <testcase name="Desktop mode. Close sub-menu from HUGE logo" time="1.188" assertions="2">
+    <testcase name="Desktop mode. Initial status" time="1.347" assertions="6">
+
+    
+
+    
+
+    
+
+    
 
     
 
     
     </testcase>
   
-    <testcase name="Desktop mode. Close sub-menu from mask" time="1.146" assertions="2">
+    <testcase name="Desktop mode. Primary navigation link item" time="1.106" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Desktop mode. Primary navigation menu item" time="2.135" assertions="4">
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Desktop mode. Secondary navigation link item" time="1.695" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Desktop mode. Close sub-menu from HUGE logo" time="1.182" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Desktop mode. Close sub-menu from mask" time="1.139" assertions="2">
 
     
 

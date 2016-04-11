@@ -71,7 +71,11 @@ $ npm test
 * the server needs to be running ```npm start```
 * the selenium standalone server needs to be running:
 	* enables autostart selenium action (selenium.start_process) on the ```nightwatch.json``` file.
-	* or start it manually ```java -jar ./tests/bin/selenium-server-standalone-2.53.0.jar```.
+	* or start it manually:
+	```
+	$ cd ./tests/bin/
+	$ java -jar ./selenium-server-standalone-2.53.0.jar
+	```
 * If your computer is not a Mac:
 	* you need to download the correct chromedriver form [here](http://chromedriver.storage.googleapis.com/index.html?path=2.21/).
 	* unzip the file into the folder ```./tests/bin/```
