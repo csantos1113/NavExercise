@@ -1,4 +1,4 @@
-/** Styles generated from scss files @author Cesar A Santos R */
+/** Styles generated from scss files @author Cesar A Santos R (rasec_1113@hotmail.com) */
 @import url(fonts.css);
 .nav-header { background-color: #ec008c; padding: 0px; position: fixed; z-index: 3; width: calc(100vw - 24px ); margin-top: -72px; padding-left: 24px; }
 
@@ -41,6 +41,10 @@
 .secondary-options .secondary-nav { display: inline-block; white-space: nowrap; font: 16px/48px Galaxie; padding: 0 24px; color: #000; width: calc(100% - 48px ); }
 
 .secondary-options .secondary-nav:hover { color: #ec008c; background-color: #eee; }
+
+@media only screen and (min-width: 868px) and (max-width: 946px) { .primary-options .primary-nav { font-size: 17px; } }
+
+@media only screen and (min-width: 769px) and (max-width: 867px) { .primary-options .primary-nav { font-size: 13px; } }
 
 @media only screen and (max-width: 768px) { .nav-header { margin-top: -60px; height: 60px; padding-left: 24px; }
   .menu { display: inline-block; float: left; }
@@ -90,4 +94,4 @@ h1 { margin: 50px 24px 0px 24px; color: #000; font: 44px/48px HUGEAvantGardeBold
   .menu-showed #mask, .submenu-showed #mask { display: block; }
   .menu-showed .main-image, .menu-showed h1, .menu-showed .content, .submenu-showed .main-image, .submenu-showed h1, .submenu-showed .content { transform: translateX(calc(100vw -  72px )); } }
 
-/* TODO: - NAV: se solapan cuando el width del navegador estar cerca a 768; - que hacer con onKeyupNav?? - Pruebas de unidad? - Pruebas e2e? - Bug menu en celular... la mascara no evita que se haga scroll */
+/* TODO: - NAV: se solapan cuando el width del navegador estar cerca a 768; - que hacer con onKeyupNav?? - Pruebas de unidad? */

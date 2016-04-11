@@ -1,4 +1,10 @@
 "use strict";
+/**
+ * Application logic.
+ * This builds and controls the navigation bar options.
+ * @author Cesar A Santos R (rasec_1113@hotmail.com)
+ */
+
 // self executing function here
 (() => {
 	//Constants used on the web page

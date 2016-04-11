@@ -1,7 +1,7 @@
 //
 //Styles for the header, logo, menu icon 
 //and navigation elements
-//@author Cesar A Santos R
+//@author Cesar A Santos R (rasec_1113@hotmail.com)
 //
 
 //Default style for the navigation bar
@@ -24,6 +24,7 @@
   a {
     text-decoration: none;
     -webkit-tap-highlight-color: $magenta;
+
     &:focus {
       outline: none;
     }
@@ -276,7 +277,7 @@
           top: 0;
           transform: rotate(-45deg);
         }
-        &:before, &:after{
+        &:before, &:after {
           transition-property: top, transform;
         }
       }
@@ -291,5 +292,18 @@
         margin-left: $mobile-padding-left;
       }
     }
+  }
+}
+//The following media queries are to support measurements
+//between the phone dimensions and desktop dimensions provided
+//on the requirements document
+@media only screen and (min-width:868px) and (max-width:946px) {
+  .primary-options .primary-nav {
+    font-size: 17px;
+  }
+}
+@media only screen and (min-width:769px) and (max-width:867px) {
+  .primary-options .primary-nav {
+    font-size: 13px;
   }
 }
