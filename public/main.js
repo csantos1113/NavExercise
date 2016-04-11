@@ -131,7 +131,7 @@
 		 */
 		createOption(url, label, className = PRIMARY_ANCHOR) {
 			let item = document.createElement('li');
-			item.innerHTML = `<a class="${className}" href="${url}">${label}</a>`;
+			item.innerHTML = `<a class="${className}" href="${url}" title="${label}">${label}</a>`;
 			return item;
 		},
 		/**
