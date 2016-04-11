@@ -1,5 +1,4 @@
-# Huge Navigation Exercise
-César Santos solution
+# Huge Navigation Exercise. By César Santos
 
 ## Install & test the solution
 
@@ -30,7 +29,7 @@ This exercise was build to work only on **Google Chrome** using the ECMAScript 2
 
 ###Javascript
 
-The code present on ```main.js``` is composted by the following elements:
+The code present on ```main.js``` file is composted by the following elements:
 
 * **Constants**: properties that never change during the execution.
 * **Util**: a singleton object with utilitarian functions that are used in several places in the code.
@@ -50,7 +49,7 @@ The following are the files using to generate the css:
 
 **_sass/_header.scss_** and **_sass/_body.scss_** are using some transitions to improve the user experience.
 
-**_both files_** are using two media-queries to support the different device dimensions expressed on the requirements. But **_sass/_header.scss_** has two more media-queries to fix a broken navigation bar that appears when the windows width is closing to the limits expressed on the requirements.
+**_Both files_** are using two media-queries to support the different device dimensions expressed on the requirements. But **_sass/_header.scss_** has two more media-queries to fix a broken navigation bar that appears when the windows width is closing to the limits expressed on the requirements.
 
 ###E2E tests
 
@@ -64,15 +63,15 @@ $ npm test
 
 ####Results
 
-* the robot will open a Google Chrome and executes each test
-* on the line command you'll see each test case and the check list results
+* the robot will open a Google Chrome instance and executes each test.
+* on the line command you'll see each test case and the check list results.
 * the robot will take some screenshots as evidence, saving its on the ```tests/reports/images/``` folder.
 
 ####Prerequisites
 * the server needs to be running ```npm start```
 * the selenium standalone server needs to be running:
 	* enables autostart selenium action (selenium.start_process) on the ```nightwatch.json``` file.
-	* or start it manually ```java -jar ./tests/bind/selenium-server-standalone-2.53.0.jar```.
+	* or start it manually ```java -jar ./tests/bin/selenium-server-standalone-2.53.0.jar```.
 * If your computer is not a Mac:
 	* you need to download the correct chromedriver form [here](http://chromedriver.storage.googleapis.com/index.html?path=2.21/).
 	* unzip the file into the folder ```./tests/bin/```
