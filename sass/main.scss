@@ -1,36 +1,14 @@
+/**
+ * Styles generated from scss files
+ * @author Cesar A Santos R (rasec_1113@hotmail.com)
+ */
 @import "_vars";
 @import "fonts.css";
-
-body {
-	margin: 0px;
-	background: #fff;
-	color: #fff;
-
-	&.menu-showed {
-		overflow: hidden;
-	}
-}
-a {
-	text-decoration: none;
-	-webkit-tap-highlight-color:$magenta;
-
-	&:visited {
-		color: white;
-	}
-	&:focus {
-		outline: none;
-	}
-	&:active {
-		background-color: inherit;
-	}
-}
 @import "_header";
 @import "_body";
 
 /*
 TODO:
-- NAV: se solapan cuando el width del navegador estar cerca a 768;
-- HAMBURGESA: estilo maluco cuando pasa de X a Hamburgesa
-- PRIMARY_NAV: en celular, clickear para cerrar el submenu, cierra todo;
-- BODY: empujar contenido
+- que hacer con onKeyupNav??
+- Pruebas de unidad?
  */

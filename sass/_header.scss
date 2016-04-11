@@ -1,18 +1,39 @@
+//
+//Styles for the header, logo, menu icon 
+//and navigation elements
+//@author Cesar A Santos R (rasec_1113@hotmail.com)
+//
+
+//Default style for the navigation bar
 .nav-header {
   background-color: $magenta;
   padding: 0px;
   position: fixed;
   z-index: 3;
-  width: unquote("calc(100% -")$desktop-padding-header unquote(")");
+  width: unquote("calc(100vw -")$desktop-padding-header unquote(")");
   margin-top: -1 * $desktop-height-header;
   padding-left: $desktop-padding-header;
 
+  //remove browser style for the unordered list
   ul {
     margin: 0;
     padding-left: 0;
     list-style: none;
   }
+  //Remove browser style for all anchors into the header
+  a {
+    text-decoration: none;
+    -webkit-tap-highlight-color: $magenta;
+
+    &:focus {
+      outline: none;
+    }
+    &:active {
+      background-color: inherit;
+    }
+  }
 }
+//Default style for the HUGE logo
 .huge-logo {
   float: left;
   padding: $desktop-padding-header 0px;
@@ -24,6 +45,7 @@
     width: inherit;
   }
 }
+//Default style for the menu icon "hamburger"
 .menu {
   width: $mobile-width-menu-icon;
   height: $mobile-height-header-content;
@@ -47,7 +69,6 @@
     height: inherit;
     top: $mobile-menu-portion * -2;
     left: 0;
-    transition-property: top, transform;
   }
   span:after {
     content: "";
@@ -57,49 +78,65 @@
     height: inherit;
     top: $mobile-menu-portion * 2;
     left: 0;
-    transition-property: top, transform;
   }
   span:before, span:after {
     transition-duration: .3s, .3s;
     transition-delay: 0s, .3s;
+    transition-property: transform, top;
   }
 }
+//Default style for the container of the nav options
 .nav-content {
   display: inline-block;
 
+  //Hide the copyright element
   .copyright {
     display: none;
   }
 }
+//Default style for the list of main links
 .primary-options {
+  //Default style for each main link
   .primary-nav {
     font: $font-first-nav;
     height: inherit;
     display: inline-block;
     padding: $desktop-padding-header/2 $desktop-padding-header;
-    color: inherit;
+    color: $white;
   }
   & > li {
     display: inline-block;
     position: relative;
   }
-  .primary-nav:hover, .active .primary-nav/* , .primary-nav:focus */ {
+  //Default style for main link hovered or activated 
+  .primary-nav:hover, .active .primary-nav
+
+  /* , .primary-nav:focus */
+  {
     color: $magenta;
     background-color: $white;
   }
 }
+//Default style for the list of secondary links
 .secondary-options {
   position: absolute;
   top: 100%;
   left: 0;
   background-color: $white;
-  display: none;
-  padding-top: $desktop-padding-top-bottom-second-panel;
-  padding-bottom: $desktop-padding-top-bottom-second-panel;
+  transition: all 0.3s;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
 
-  .nav-header .active & {
-    display: initial;
+  //Default style for the list of secondary links when their main link is activated
+  .nav-content .active & {
+    padding-top: $desktop-padding-top-bottom-second-panel;
+    padding-bottom: $desktop-padding-top-bottom-second-panel;
+    height: inherit;
+    overflow: auto;
+    max-height: unquote("calc(100vh -") $desktop-height-header unquote("-") $desktop-padding-top-bottom-second-panel * 2 unquote(")");
   }
+  //Default style for each secondary link
   .secondary-nav {
     display: inline-block;
     white-space: nowrap;
@@ -108,39 +145,123 @@
     color: $black;
     width: unquote("calc(100% -")$desktop-padding-right-left-second-nav*2 unquote(")");
 
-    &:hover/* , &:focus */ {
+    //Default style for secondary link hovered
+    &:hover
+
+    /* , &:focus */
+    {
       color: $magenta;
       background-color: $light-gray;
     }
   }
 }
+//Specific styles for Phone devices
 @media only screen and (max-width:768px) {
-  .huge-logo {
-    display: none;
-  }
-  .nav-content {
-    display: none;
-  }
+  //Change the size of the navigation bar
   .nav-header {
     margin-top: -1 * $mobile-height-header;
     height: $mobile-height-header;
     padding-left: $mobile-padding-left;
   }
+  //Show the menu icon "hamburger"
   .menu {
     display: inline-block;
     float: left;
   }
-  .primary-options .primary-nav:hover {
-    color: initial;
-    background-color: $light-gray;
+  //Change the logo style and hide it
+  .huge-logo {
+    display: none;
+    padding: $mobile-padding-top-bottom-header 0px;
+    height: $mobile-height-header-content;
+    width: $mobile-width-logo;
   }
-  .menu-showed {
+  //Change the style for the container of the nav options.
+  //Move it for the left side
+  .nav-content {
+    position: absolute;
+    padding-left: 0px;
+    top: $mobile-height-header;
+    left: 0;
+    right: 100%;
+    height: unquote("calc(100vh - ")$mobile-height-header unquote(")");
+    background-color: $white;
+    color: $black;
+    overflow-y: auto;
+    transition: right 0.3s;
+
+    //Show the copyright
+    .copyright {
+      position: fixed;
+      bottom: 0;
+      margin-left: 0;
+      left: 0;
+      right: 100%;
+      background-color: $white;
+      border-top: 1px solid rgba(128, 128, 128, 1);
+      font: $mobile-copyright;
+      line-height: $mobile-padding-bottom-first-panel;
+      transition: all 0.3s;
+      white-space: nowrap;
+      overflow: hidden;
+      display: inline-block;
+    }
+  }
+  //Change the style of the list of main links
+  .primary-options {
+    padding-top: $mobile-padding-top-first-panel;
+    padding-bottom: $mobile-padding-bottom-first-panel;
+
+    & > li {
+      display: block;
+    }
+    //Change the style for each main link
+    .primary-nav {
+      padding: 0px $mobile-width-chevron 0px $mobile-padding-left;
+      width: unquote("calc(100% - ")$mobile-width-chevron+$mobile-padding-left unquote(")");
+      color: $black;
+
+      &:hover {
+        color: initial;
+        background-color: $light-gray;
+      }
+    }
+    //Show a chevron on main links who has secondary links (collapsed)
+    .has-children .primary-nav:after {
+      content: "\276e";
+      color: $magenta;
+      position: absolute;
+      right: 0;
+      width: $mobile-width-chevron;
+      text-align: center;
+      transform: rotate($mobile-degree-chevron);
+      transition: transform 0.3s;
+    }
+    //Change the style for main link activated
+    .active {
+      //Keep the same initial color
+      .primary-nav {
+        color: initial;
+      }
+      //Animate the chevron (uncollapsed)
+      &.has-children .primary-nav:after {
+        transform: rotate($mobile-degree-rotation-chevron);
+      }
+      //Put the list of secondary links below the main link
+      .secondary-options {
+        position: initial;
+        padding-top: initial;
+        padding-bottom: initial;
+        max-height: none;
+      }
+    }
+  }
+  //When the menu or sub-menu is showed
+  .menu-showed, .submenu-showed {
+    //Show the logo
     .huge-logo {
       display: inline-block;
-      padding: $mobile-padding-top-bottom-header 0px;
-      height: $mobile-height-header-content;
-      width: $mobile-width-logo;
     }
+    //Change the "hamburger" icon to "close" icon
     .menu {
       float: right;
       margin: 0px $mobile-padding-left-right-menu-icon;
@@ -156,66 +277,33 @@
           top: 0;
           transform: rotate(-45deg);
         }
+        &:before, &:after {
+          transition-property: top, transform;
+        }
       }
     }
+    //show the container of the nav options
     .nav-content {
-      display: block;
-      position: absolute;
-      padding-left: 0px;
-      top: $mobile-height-header;
-      left: 0;
-      width: unquote("calc(100vw - ")$mobile-space-available-body unquote(")");
-      height: unquote("calc(100vh - ")$mobile-height-header unquote(")");
-      background-color: $white;
-      color: $black;
-      overflow-y: auto;
-    }
-    .primary-options {
-      padding-top: $mobile-padding-top-first-panel;
-      padding-bottom: $mobile-padding-bottom-first-panel;
+      right: $mobile-space-available-body;
 
-      & > li {
-        display: block;
+      //show the copyright
+      .copyright {
+        right: $mobile-space-available-body;
+        margin-left: $mobile-padding-left;
       }
     }
-    .primary-nav {
-      padding: 0px $mobile-width-chevron 0px $mobile-padding-left;
-      width: unquote("calc(100% - ")$mobile-width-chevron+$mobile-padding-left unquote(")");
-    }
-    .has-children .primary-nav:after {
-      content: "\276e";
-      color: $magenta;
-      position: absolute;
-      right: 0;
-      width: $mobile-width-chevron;
-      text-align: center;
-      transform: rotate($mobile-degree-chevron);
-      transition: transform 0.3s;
-    }
-    .active {
-      .primary-nav {
-        color: initial;
-      }
-      &.has-children .primary-nav:after {
-        transform: rotate($mobile-degree-rotation-chevron);
-      }
-      .secondary-options {
-        position: initial;
-        padding-top: initial;
-        padding-bottom: initial;
-      }
-    }
-    .copyright {
-      position: fixed;
-      bottom: 0;
-      margin: 0 $mobile-padding-left;
-      left: 0;
-      right: 0;
-      display: block;
-      background-color: $white;
-      font: $mobile-copyright;
-      line-height: $mobile-padding-bottom-first-panel;
-      width: unquote("calc(100vw - ")$mobile-space-available-body unquote("- ")$mobile-padding-left*2 unquote(")");
-    }
+  }
+}
+//The following media queries are to support measurements
+//between the phone dimensions and desktop dimensions provided
+//on the requirements document
+@media only screen and (min-width:868px) and (max-width:946px) {
+  .primary-options .primary-nav {
+    font-size: 17px;
+  }
+}
+@media only screen and (min-width:769px) and (max-width:867px) {
+  .primary-options .primary-nav {
+    font-size: 13px;
   }
 }

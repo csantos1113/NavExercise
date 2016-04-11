@@ -1,4 +1,82 @@
 # Huge Navigation Exercise
+César Santos solution
+
+## Install & test the solution
+
+###Requirements
+* Node.js and npm (You get both when you [install Node.js](https://docs.npmjs.com/getting-started/installing-node)).
+
+###Install
+* Download the zip file or the master copy of [GitHub](https://github.com/santospro/NavExercise).
+* Extract the zip file.
+* Move to the exercise directory:
+```
+$ cd NavExercise
+```
+* Run the command:
+```
+$ npm i && npm start
+```
+
+###Run
+* In your Google Chrome navigate to [http://localhost:3000](http://localhost:3000)
+
+####Disclaimer
+This exercise was build to work only on **Google Chrome** using the ECMAScript 2015 Language Specification (ES2015).
+
+*I recommend see [this link](https://babeljs.io/docs/learn-es2015/) if you are not familiarized with ES2015.*
+
+##Content
+
+###Javascript
+
+The code present on ```main.js``` is composted by the following elements:
+
+* **Constants**: properties that never change during the execution.
+* **Util**: a singleton object with utilitarian functions that are used in several places in the code.
+* **Nav**: a singleton object with all nav functionality.
+* **Events**: a singleton object with the events listeners.
+
+###Styles
+
+When you started the server, the ```styles/main.css``` file is generated automatically using the sass preprocessor.
+
+The following are the files using to generate the css:
+
+* ```sass/_vars.scss``` hosts the variables for measurements, typography and colors. These vars are using for the following scripts.
+* ```sass/_header.scss``` has the styles applied to the components of the navigation bar.
+* ```sass/_body.scss``` has the style applied to the body components.
+* ```sass/main.scss``` is the main point to generate the css, importing all scss files and fonts.css file.
+
+**_sass/_header.scss_** and **_sass/_body.scss_** are using some transitions to improve the user experience.
+
+**_both files_** are using two media-queries to support the different device dimensions expressed on the requirements. But **_sass/_header.scss_** has two more media-queries to fix a broken navigation bar that appears when the windows width is closing to the limits expressed on the requirements.
+
+###E2E tests
+
+It's important to have some automated tests to ensure the proper functioning of the application during the time and during the futures changes.
+
+You need to run the following command to start the automated test:
+
+```
+$ npm test
+```
+
+####Results
+
+* the robot will open a Google Chrome and executes each test
+* on the line command you'll see each test case and the check list results
+* the robot will take some screenshots as evidence, saving its on the ```tests/reports/images/``` folder.
+
+####Prerequisites
+* the server needs to be running ```npm start```
+* the selenium standalone server needs to be running:
+	* enables autostart selenium action (selenium.start_process) on the ```nightwatch.json``` file.
+	* or start it manually ```java -jar ./tests/bind/selenium-server-standalone-2.53.0.jar```.
+* If your computer is not a Mac:
+	* you need to download the correct chromedriver form [here](http://chromedriver.storage.googleapis.com/index.html?path=2.21/).
+	* unzip the file into the folder ```./tests/bin/```
+	* change the selenium.cli_args.webdriver.chrome.driver on the ```nightwatch.json``` file to use the correct driver.
 
 ## Overview
 

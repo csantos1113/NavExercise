@@ -1,0 +1,26 @@
+{
+    "src_folders": ["tests/e2e"],
+    "output_folder": "tests/reports",
+    "selenium": {
+        "start_process": false,
+        "server_path": "./tests/bin/selenium-server-standalone-2.53.0.jar",
+        "host": "localhost",
+        "port": 4444,
+        "cli_args": {
+            "webdriver.chrome.driver": "./tests/bin/chromedriver"
+        }
+    },
+    "test_settings": {
+        "default": {
+            "launch_url": "http://localhost:3000",
+            "screenshots": {
+                "enabled": false,
+                "path": ""
+            },
+            "desiredCapabilities": {
+                "browserName": "chrome",
+                "javascriptEnabled": true
+            }
+        }
+    }
+}
