@@ -24,7 +24,7 @@
 		body: null
 	};
 	/**
-	 * Singleton with utility functions
+	 * Singleton with utilitarian functions
 	 * @type {Object}
 	 */
 	var Util = {
@@ -55,7 +55,7 @@
 		}
 	};
 	/**
-	 * Singleton with utility functions
+	 * Singleton with the nav functionality
 	 * @type {Object}
 	 */
 	var Nav = {
