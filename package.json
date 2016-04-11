@@ -16,7 +16,7 @@
   "private": true,
   "scripts": {
     "test": "./node_modules/.bin/nightwatch",
-    "start": "./node_modules/node-sass/bin/node-sass --output-style compact ./sass/main.scss ./public/styles/main.css && node ./bin/www"
+    "start": "node ./bin/www"
   },
   "dependencies": {
     "express": "~4.2.0",
