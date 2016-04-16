@@ -1,4 +1,3 @@
-"use strict";
 /**
  * Application logic.
  * This builds and controls the navigation bar options.
@@ -6,9 +5,9 @@
  */
 
 // self executing function here
-(() => {
+(function() {
 	//Constants used on the web page
-	const URL_NAV_API = './api/nav.json',
+	var URL_NAV_API = './api/nav.json',
 		PRIMARY_UNORDERED_LIST = 'primary-options',
 		HAS_CHILDREN = 'has-children',
 		SECONDARY_UNORDERED_LIST = 'secondary-options',
@@ -32,7 +31,7 @@
 		 * Identifies whether it's a Phone
 		 * @return {Boolean} true if phone, false otherwise
 		 */
-		isMobile() {
+		isMobile: function() {
 			return cacheEl.navContentStyle.display === 'block';
 		},
 		/**
@@ -41,7 +40,7 @@
 		 * @param {Object} element   Element to add the class
 		 * @param {String} className class to add
 		 */
-		addClass(element, className) {
+		addClass: function(element, className) {
 			element.classList.add(className);
 		},
 		/**
@@ -50,7 +49,7 @@
 		 * @param {Object} element   Element to remove the class
 		 * @param {String} className class to remove
 		 */
-		removeClass(element, className) {
+		removeClass: function(element, className) {
 			element.classList.remove(className);
 		}
 	};
@@ -63,8 +62,10 @@
 		 * Request the nav options from the server and build options on the navigation bar.
 		 * Catch any error and show it on the console.
 		 */
-		load() {
-			Nav.get().then(Nav.build).catch(errorMsg => console.error(errorMsg));
+		load: function() {
+			Nav.get().then(Nav.build).catch(function(errorMsg) {
+				console.error(errorMsg);
+			});
 		},
 		/**
 		 * Request the nav options from the server and return a promise.
@@ -72,11 +73,11 @@
 		 * If something wrong happened, it will reject the promise with the error message.
 		 * @return {Promise}
 		 */
-		get() {
-			return new Promise((resolve, reject) => {
-				let xmlhttp = new XMLHttpRequest();
+		get: function() {
+			return new Promise(function(resolve, reject) {
+				var xmlhttp = new XMLHttpRequest();
 				xmlhttp.open("GET", URL_NAV_API);
-				xmlhttp.onreadystatechange = () => {
+				xmlhttp.onreadystatechange = function() {
 					if (xmlhttp.readyState == XMLHttpRequest.DONE) {
 						if (xmlhttp.status == 200) {
 							resolve(JSON.parse(xmlhttp.responseText).items);
@@ -93,14 +94,15 @@
 		 * 
 		 * @param  {Array} items Items data
 		 */
-		build(items = []) {
-			let itemData,
+		build: function(items) {
+			var itemData,
 				item,
 				children,
 				childrenNumber,
 				subMenu,
 				navOptions = document.getElementsByClassName(PRIMARY_UNORDERED_LIST)[0];
-			for (let i = 0; i < items.length; i++) {
+			items = Array.isArray(items) ? items : [];
+			for (var i = 0; i < items.length; i++) {
 				itemData = items[i];
 				children = itemData.items;
 				childrenNumber = children.length;
@@ -108,7 +110,7 @@
 				if (childrenNumber > 0) {
 					subMenu = document.createElement('ul');
 					Util.addClass(subMenu, SECONDARY_UNORDERED_LIST);
-					for (let j = 0; j < children.length; j++) {
+					for (var j = 0; j < children.length; j++) {
 						subMenu.appendChild(Nav.createOption(children[j].url, children[j].label, SECONDARY_ANCHOR));
 					}
 					item.appendChild(subMenu);
@@ -128,9 +130,10 @@
 		 * @param  {String} className Class to the option
 		 * @return {Object}           li element
 		 */
-		createOption(url, label, className = PRIMARY_ANCHOR) {
-			let item = document.createElement('li');
-			item.innerHTML = `<a class="${className}" href="${url}" title="${label}">${label}</a>`;
+		createOption: function(url, label, className) {
+			var item = document.createElement('li');
+			className = className || PRIMARY_ANCHOR;
+			item.innerHTML = '<a class="' + className + '" href="' + url + '" title="' + label + '">' + label + '</a>';
 			return item;
 		},
 		/**
@@ -138,7 +141,7 @@
 		 * - sub-menu bar (Desktop)
 		 * - menu bar (Mobile)
 		 */
-		hideAll() {
+		hideAll: function() {
 			Nav.hideSubMenu(true);
 			cacheEl.body.unlocked();
 		},
@@ -148,7 +151,8 @@
 		 * 
 		 * @param  {Boolean} removeMask remove or not remove the mask
 		 */
-		hideSubMenu(removeMask = false) {
+		hideSubMenu: function(removeMask) {
+			removeMask = !!removeMask;
 			if (cacheEl.primarySelected) {
 				Util.removeClass(cacheEl.primarySelected, ACTIVE_CLASS);
 				delete cacheEl.primarySelected;
@@ -170,10 +174,10 @@
 		 * @param  {Object} primaryNav Main link selected
 		 * @return {Boolean}           true if the anchor can redirect the page, false otherwise
 		 */
-		activateSubMenu(primaryNav) {
+		activateSubMenu: function(primaryNav) {
 			if (!primaryNav)
 				return;
-			let primaryItem = primaryNav.parentNode,
+			var primaryItem = primaryNav.parentNode,
 				hasSubMenu = !!primaryNav.nextSibling,
 				normalBehavior = !hasSubMenu;
 			//clicked the same main-link
@@ -198,8 +202,8 @@
 		/**
 		 * Toggle (show/hide) the mobile menu.
 		 */
-		toggleMobileMenu() {
-			let body = cacheEl.body,
+		toggleMobileMenu: function() {
+			var body = cacheEl.body,
 				classList = body.classList;
 			if (classList.contains(MENU_SHOWED) || classList.contains(SUBMENU_SHOWED)) {
 				Nav.hideAll();
@@ -220,29 +224,29 @@
 		 * 
 		 * @param  {Object} event Event object fired by click action
 		 */
-		onClickNav(event) {
-			let el = event.target;
-			if (el.tagName == 'A') {
-				if (el.classList.contains(PRIMARY_ANCHOR)) {
-					if (!Nav.activateSubMenu(el)) {
-						event.preventDefault();
+		onClickNav:function(event) {
+				var el = event.target;
+				if (el.tagName == 'A') {
+					if (el.classList.contains(PRIMARY_ANCHOR)) {
+						if (!Nav.activateSubMenu(el)) {
+							event.preventDefault();
+						}
+					} else {
+						//Any other link: hide all
+						Nav.hideAll();
 					}
-				} else {
-					//Cualquier otro link que se toque, se debe ocultar todo
-					Nav.hideAll();
 				}
+			},
+			/**
+			 * Manage the click event on the menu icon "hamburger".
+			 * Toggle (show/hide) the mobile menu.
+			 * 
+			 * @param  {Object} event Event object fired by click action
+			 */
+			onMenuMobileClick:function(event) {
+				event.preventDefault();
+				Nav.toggleMobileMenu();
 			}
-		},
-		/**
-		 * Manage the click event on the menu icon "hamburger".
-		 * Toggle (show/hide) the mobile menu.
-		 * 
-		 * @param  {Object} event Event object fired by click action
-		 */
-		onMenuMobileClick(event) {
-			event.preventDefault();
-			Nav.toggleMobileMenu();
-		}
 	};
 	//When the DOMContent is loaded, do the logic
 	document.addEventListener('DOMContentLoaded', loadFn);
@@ -267,12 +271,12 @@
 		 * Listener to click event on the mask to hide menu & sub-menu
 		 */
 		function processBody() {
-			let body = cacheEl.body;
-			body.locked = (className = MENU_SHOWED) => {
-				Util.addClass(body, className);
+			var body = cacheEl.body;
+			body.locked = function(className) {
+				Util.addClass(body, className || MENU_SHOWED);
 			};
-			body.unlocked = (className = MENU_SHOWED) => {
-				Util.removeClass(body, className);
+			body.unlocked = function(className) {
+				Util.removeClass(body, className || MENU_SHOWED);
 			};
 			document.getElementById('mask').addEventListener('click', Nav.hideAll);
 		}
@@ -286,7 +290,7 @@
 		 * set the current year to the copyright
 		 */
 		function processCopyright() {
-			let currentYear = new Date().getFullYear();
+			var currentYear = new Date().getFullYear();
 			document.getElementById('copyright').firstElementChild.innerHTML = currentYear;
 		}
 		//store some elements and data to use later
